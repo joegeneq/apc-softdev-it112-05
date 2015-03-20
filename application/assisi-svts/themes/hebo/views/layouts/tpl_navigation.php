@@ -37,12 +37,12 @@
                                 "data-description"=>"inquiry suggestions"
                             )
                         ),
-						  array(
-                            'label'=>'Announcement', 
+					   array(
+                            'label'=>'Contact', 
                             'url'=>array('/announcement/index'),
-                           
+                       
                             'linkOptions'=>array(
-                                "data-description"=>"view menus"
+                                "data-description"=>"inquiry suggestions"
                             )
                         ),
 			
