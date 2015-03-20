@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2015 at 06:54 PM
+-- Generation Time: Mar 21, 2015 at 06:50 AM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `assisi-svts-sd`
+-- Database: `assisi-svts-sdd`
 --
 
 -- --------------------------------------------------------
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `academicyear` (
   `StartYear` year(4) NOT NULL,
   `EndYear` year(4) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `academicyear`
@@ -62,7 +62,8 @@ INSERT INTO `academicyear` (`Id`, `StartYear`, `EndYear`) VALUES
 (1, 2012, 2013),
 (2, 2013, 2014),
 (3, 0000, 0000),
-(4, 2009, 2010);
+(4, 2009, 2010),
+(5, 2014, 2015);
 
 -- --------------------------------------------------------
 
@@ -82,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `allocation` (
   KEY `fk_Allocation_Timeline1_idx` (`Timeline_Id`),
   KEY `fk_Allocation_Application1_idx` (`Application_Id`),
   KEY `fk_Allocation_Sponsor1_idx` (`Sponsor_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `allocation`
@@ -117,7 +118,9 @@ INSERT INTO `allocation` (`id`, `TuitionFee`, `Miscellaneous`, `Others`, `Timeli
 (26, '45000.00', '0.00', '0.00', 1, 26, 1),
 (27, '45000.00', '0.00', '0.00', 1, 27, 1),
 (30, '0.00', '0.00', '0.00', 10, 28, 1),
-(31, '110000.00', '50000.00', '3000.00', 17, 29, 2);
+(31, '110000.00', '50000.00', '3000.00', 17, 29, 2),
+(32, '0.00', '0.00', '0.00', 18, 30, 1),
+(33, '0.00', '0.00', '0.00', 19, 31, 1);
 
 -- --------------------------------------------------------
 
@@ -130,7 +133,14 @@ CREATE TABLE IF NOT EXISTS `announcement` (
   `Subject` varchar(150) NOT NULL,
   `message_box` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `announcement`
+--
+
+INSERT INTO `announcement` (`id`, `Subject`, `message_box`) VALUES
+(1, 'Meeting!', 'Hi scholars!');
 
 -- --------------------------------------------------------
 
@@ -183,8 +193,8 @@ INSERT INTO `application` (`Id`, `TypeOfApplication`, `Course`, `Duration`, `Spo
 (27, 'College', 'BSBA Marketing Management', '', 1, 28),
 (28, 'College', 'Law', '4', 1, 30),
 (29, 'College', 'AB Literature', '4', 1, 32),
-(30, 'College', 'IT', '3', 1, 34),
-(31, 'College', 'IT', '3', 1, 35);
+(30, 'College', 'IT', '3', 1, 35),
+(31, 'College', 'IT', '', 1, 36);
 
 -- --------------------------------------------------------
 
@@ -209,6 +219,7 @@ INSERT INTO `authassignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
 ('Coordinator', '29', NULL, NULL),
 ('Coordinator', '31', NULL, NULL),
 ('Coordinator', '33', NULL, NULL),
+('Coordinator', '34', NULL, NULL),
 ('Student', '11', NULL, NULL),
 ('Student', '12', NULL, NULL),
 ('Student', '13', NULL, NULL),
@@ -229,6 +240,8 @@ INSERT INTO `authassignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
 ('Student', '28', NULL, NULL),
 ('Student', '30', NULL, NULL),
 ('Student', '32', NULL, NULL),
+('Student', '35', NULL, NULL),
+('Student', '36', NULL, NULL),
 ('Student', '5', NULL, NULL),
 ('Student', '6', NULL, NULL),
 ('Student', '7', NULL, NULL),
@@ -437,7 +450,7 @@ CREATE TABLE IF NOT EXISTS `partnerschool` (
   PRIMARY KEY (`Id`),
   KEY `fk_School_has_User_User1_idx` (`User_Id`),
   KEY `fk_School_has_User_School1_idx` (`School_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `partnerschool`
@@ -477,7 +490,8 @@ INSERT INTO `partnerschool` (`Id`, `School_Id`, `User_Id`) VALUES
 (31, 23, 32),
 (32, 23, 33),
 (33, 3, 34),
-(34, 3, 35);
+(34, 8, 35),
+(35, 4, 36);
 
 -- --------------------------------------------------------
 
@@ -505,7 +519,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `FuturePlan` longtext,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Email_UNIQUE` (`Email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `profile`
@@ -545,8 +559,9 @@ INSERT INTO `profile` (`Id`, `Lastname`, `Firstname`, `Middlename`, `Religion`, 
 (32, 'Joestar', 'George', 'Steak', '', 1, '1970-01-01', '', 'Joestar Manor, London, England', '09158976245', 'howdoyoulikeyoursteak@moo.com', '2014-05-02', '2014-05-02 06:49:09', 'Married', NULL, NULL, ''),
 (33, 'Mesina', 'Leon Jordan', 'J.', 'Catholic', 1, '1970-01-01', 'Quezon City', 'Blk 16 lt. 11 QC Ville 1 Central Ave,Diliman Quezon city', '09175110623', 'ljmesina@apc.edu.ph', '2014-05-19', '2014-05-19 03:36:09', 'Single', NULL, NULL, ''),
 (34, 'Galan', 'Sarah', 'M.', '', 0, '1981-11-12', '', 'Assisi Development Foundation Incorporated', '09232996239', 'sar_moresca@yahoo.com', '2014-05-19', '2014-05-19 03:42:01', 'Married', NULL, NULL, ''),
-(35, 'Tolorio', 'Shane', 'Gador', 'Muslim', 1, '1970-01-01', 'Manila', 'Bicutan', '09067554498', 'jtalmazan113@gmail.com', '2015-03-07', '2015-03-06 23:55:58', 'Single', NULL, NULL, ''),
-(36, 'Tolorio', 'Shane', 'Gador', 'Muslim', 1, '1970-01-01', 'Manila', 'Bicutan', '09067554498', 'jeffbryan18@gmail.com', '2015-03-07', '2015-03-06 23:57:47', 'Single', NULL, NULL, '');
+(35, 'Almazan', 'Jeff Bryan', 'Talatagod', '', 1, '1970-01-01', '', 'Alabang', '5051735', 'jtalmazan113@gmail.com', '2015-02-28', '2015-02-28 06:53:42', 'Single', NULL, NULL, ''),
+(36, 'Almazan', 'Jeff', 'Talatagod', 'Roman Catholic', 1, '1970-01-01', 'Manila', 'Alabang', '0906754495', 'jeffbryan18@gmail.com', '2015-03-04', '2015-03-04 11:37:19', 'Single', NULL, NULL, ''),
+(37, 'Abrenica', 'Jeff Bryanttt', 'Talatagod', '', 1, '1970-01-01', '', 'Bicutan', '09067554495', 'jeffbryan_almazan@yahoo.com', '2015-03-17', '2015-03-17 15:13:37', 'Single', NULL, NULL, '');
 
 -- --------------------------------------------------------
 
@@ -714,9 +729,8 @@ CREATE TABLE IF NOT EXISTS `timeline` (
   `academicterm_id` int(11) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `fk_timeline_academicyear1_idx` (`academicyear_id`),
-  KEY `fk_timeline_academicterm1_idx` (`academicterm_id`),
-  KEY `academicyear_id` (`academicyear_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+  KEY `fk_timeline_academicterm1_idx` (`academicterm_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `timeline`
@@ -727,7 +741,9 @@ INSERT INTO `timeline` (`Id`, `academicyear_id`, `academicterm_id`) VALUES
 (10, 2, 1),
 (15, 3, 1),
 (16, 3, 2),
-(17, 4, 1);
+(17, 4, 1),
+(18, 5, 2),
+(19, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -744,7 +760,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`Id`),
   KEY `fk_User_Profile1_idx` (`Profile_Id`),
   KEY `fk_User_Role1_idx` (`Role_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `user`
@@ -784,8 +800,9 @@ INSERT INTO `user` (`Id`, `Username`, `Password`, `Profile_Id`, `Role_Id`) VALUE
 (31, 'gjoestar', '$2t/8Nf0pc./Y', 32, 2),
 (32, 'lmesina', '$2pWKc5JRwB2k', 33, 3),
 (33, 'vmesina', '$2.VQz1WrYyQs', 34, 2),
-(34, 'stolorio', '$2J1RIhsanZFc', 35, 3),
-(35, 'htolorio', '$2iU23WPCzxl6', 36, 3);
+(34, 'jalmazan', '$2Yya3RYYteJ6', 35, 2),
+(35, 'ealmazan', '$2CHcwB21.4wc', 36, 3),
+(36, 'falmazan', '$2chnd3bR8saE', 37, 3);
 
 --
 -- Constraints for dumped tables
