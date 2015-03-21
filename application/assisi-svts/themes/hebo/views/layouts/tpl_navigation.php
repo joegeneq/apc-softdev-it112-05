@@ -37,6 +37,15 @@
                                 "data-description"=>"inquiry suggestions"
                             )
                         ),
+						  array(
+                            'label'=>'Announcement', 
+                            'url'=>array('/announcement/index'),
+                           
+                            'linkOptions'=>array(
+                                "data-description"=>"view menus"
+                            )
+                        ),
+			
                         array(
                             'label'=>'Operations', 
                             'url'=>array('/site/dashboard'),
@@ -45,6 +54,8 @@
                                 "data-description"=>"view menus"
                             )
                         ),
+						
+						
                        /* array(
                             'label'=>'Coordinator\'s Operations', 
                             'url'=>array('/grades/admin'),
