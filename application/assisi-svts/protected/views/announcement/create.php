@@ -9,7 +9,6 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List Announcement', 'url'=>array('index')),
-	array('label'=>'Manage Announcement', 'url'=>array('admin')),
 );
 ?>
 
