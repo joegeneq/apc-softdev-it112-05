@@ -64,7 +64,8 @@ $type = Role::model()->findByPk($user->Role_Id)->Name;
 					<?php echo $form->error($model,'Religion'); ?>
 				</div>
 				</div>
-
+				
+			
 				<div style="display: inline-flex;">
 				<div class="row" <?php echo (SysTable::IsVisible('DateOfBirth',$user->Role_Id) ?  "" : "style='display:none;'"); ?>>
 					<?php echo $form->labelEx($model,'DateOfBirth'); ?>
@@ -124,8 +125,37 @@ $type = Role::model()->findByPk($user->Role_Id)->Name;
 						<?php echo $form->labelEx($partnerSchool,'School_Id'); ?>
 						<?php echo $form->dropDownList($partnerSchool,'School_Id',School::GetSchoolsNoCoordinator(),array('empty'=>'--Select a school partner--')); ?>
 						<?php echo $form->error($partnerSchool,'School_Id'); ?>
-					</div> 
+					</div>
+
+					<div class="row"  <?php  echo $model->IsStudent($type) ? "style='display:none;'" : "" ;?>>
+						<?php echo $form->labelEx($application,'Course'); ?>
+						<?php echo $form->textField($application,'Course',array('size'=>60,'maxlength'=>100)); ?>
+						<?php echo $form->error($application,'Course'); ?>
+					</div>
+					
 				</div>
+				
+				<div style="display: inline-flex;">
+					<div class="row" <?php echo (SysTable::IsVisible('Honor',$user->Role_Id) ?  "" : "style='display:none;'"); ?>>
+						<?php echo $form->labelEx($model,'Honor'); ?>
+						<?php echo $form->textField($model,'Honor'); ?>
+						<?php echo $form->error($model,'Honor'); ?>
+					</div>
+				</div>
+				
+				<div style="display: inline-flex;">
+					<div class="row" <?php echo (SysTable::IsVisible('YearStarted',$user->Role_Id) ?  "" : "style='display:none;'"); ?>>
+						<?php echo $form->labelEx($model,'YearStarted'); ?>
+						<?php echo $form->textField($model,'YearStarted'); ?>
+						<?php echo $form->error($model,'YearStarted'); ?>
+					</div>
+					<div class="row" <?php echo (SysTable::IsVisible('YearEnded',$user->Role_Id) ?  "" : "style='display:none;'"); ?>>
+						<?php echo $form->labelEx($model,'YearEnded'); ?>
+						<?php echo $form->textField($model,'YearEnded'); ?>
+						<?php echo $form->error($model,'YearEnded'); ?>
+					</div>
+				</div>
+
 				
 				<!-- Application tab -->
 				<div class="tab-pane" id="application">
@@ -144,7 +174,7 @@ $type = Role::model()->findByPk($user->Role_Id)->Name;
 
 					<div class="row">
 						<?php echo $form->labelEx($application,'Course'); ?>
-						<?php echo $form->textField($application,'Course',array('size'=>60,'maxlength'=>100)); ?>
+						<?php echo $model->IsStudent($type) ? $form->textField($application,'Course',array('size'=>60,'maxlength'=>100)) : ""; ?>
 						<?php echo $form->error($application,'Course'); ?>
 					</div>
 
@@ -239,27 +269,18 @@ $type = Role::model()->findByPk($user->Role_Id)->Name;
 							$('#prevtab').show();
 						}else if(tabcount == 0){
 							$('#nexttab').hide();
+							$('#prevtab').show();
 						}
 					}else if(direction == 'prev'){
 						if(tabcount > 0){
 							$('#nexttab').show();
 						}else if(tabcount == 0){
 							$('#prevtab').hide();
+							$('#nexttab').show();
 						}
 					}
 				}
 
-				// var durationTextField = $('#Application_Duration');
-				// $('#Application_TypeOfApplication').change(function(){
-				// 	if(this.value === "College"){
-				// 		durationTextField.text("Adsa");
-				// 		durationTextField.attr("placeholder", "In terms of year");
-				// 	}else if(this.value === "Vocational"){
-				// 		durationTextField.attr("placeholder", "In terms of month");
-				// 	}else{
-				// 		durationTextField.attr("placeholder", "");
-				// 	}
-				// });
 
 				$('#Academicyear_StartYear').change(function(){
 					var startyear = $(this).val();
