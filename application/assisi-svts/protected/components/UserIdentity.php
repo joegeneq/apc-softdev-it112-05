@@ -15,7 +15,7 @@ class UserIdentity extends CUserIdentity
 	 * against some persistent user identity storage (e.g. database).
 	 * @return boolean whether authentication succeeds.
 	 */
-	   private $_id;
+	private $_id;
     public function authenticate()
     {
         $record=User::model()->findByAttributes(array('Username'=>$this->username));
@@ -34,6 +34,7 @@ class UserIdentity extends CUserIdentity
            /*$this->setState('title', $record->title);*/
            Yii::app()->session['profileId'] = $profile->Id; 
            Yii::app()->session['Fullname'] = $profile->Firstname.' '.$profile->Lastname;
+			Yii::app()->session['Role'] = $record->role->Name;
            if(!is_null($school))
             Yii::app()->session['SchoolId'] = $school->School_Id;
         $this->errorCode=self::ERROR_NONE;
