@@ -38,9 +38,9 @@
                             )
                         ),
 					   array(
-                            'label'=>'Contact', 
+                            'label'=>'Announcement', 
                             'url'=>array('/announcement/index'),
-                       
+							'visible'=>Yii::app()->user->checkAccess('Student'), 
                             'linkOptions'=>array(
                                 "data-description"=>"inquiry suggestions"
                             )
