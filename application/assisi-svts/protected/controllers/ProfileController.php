@@ -92,8 +92,8 @@ class ProfileController extends RController
 		}
 		else
 		{
-			$model->scenario = 'coordinator';
-			$type="Coordinator";
+			$model->scenario = 'Alumni';
+			$type="Alumni";
 		}
 
 		
@@ -117,6 +117,11 @@ class ProfileController extends RController
 				$application->SponsoredYears = 1;
 				$valid = $allocation->validate() && $application->validate() && $academicTerm->validate() && $academicYear->validate()  && $valid;
 			}
+			
+			$model->Honor = $_POST['Profile']['Honor'];
+			$model->YearStarted =$_POST['Profile']['YearStarted'];
+			$model->YearEnded=$_POST['Profile']['YearEnded'];
+			$application->Course=$_POST['Application']['Course'];
 			if($valid)
 			{
 				if($model->save())
