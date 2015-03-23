@@ -44,8 +44,8 @@ class Allocation extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Sponsor_Id', 'required','on'=>'student'),
-			array('TuitionFee, Miscellaneous, Others,', 'required','on'=>'created'),
+			/*array('Sponsor_Id', 'required','on'=>'student'),
+			array('TuitionFee, Miscellaneous, Others,', 'required','on'=>'created'),*/
 			array('Timeline_Id, Application_Id, Sponsor_Id', 'numerical', 'integerOnly'=>true),
 			array('TuitionFee, Miscellaneous, Others', 'length', 'max'=>8),
 			// The following rule is used by search().
