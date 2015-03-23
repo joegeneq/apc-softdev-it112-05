@@ -1,4 +1,4 @@
-<?php
+	<?php
 /* @var $this ProfileController */
 /* @var $model Profile */
 
@@ -10,21 +10,22 @@ $this->breadcrumbs=array(
 $type = Role::model()->findByPk($user->Role_Id)->Name;
 $this->menu=array(
   array('label'=>'Scholars','url'=>array('profile/admin','type'=>'Student'),'active'=>($type==='Student')),
-  array('label'=>'Coordinators','url'=>array('profile/admin','type'=>'Coordinator'),'active'=>($type==='Coordinator')),
+  array('label'=>'Graduates','url'=>array('profile/admin','type'=>'Alumni'),'active'=>($type==='Alumni')),
   array('label'=>'Schools','url'=>array('school/admin')),
   array('label'=>'Grades','url'=>array('grades/admin')),
-  array('label'=>'Sponsors','url'=>array('sponsor/admin')),
-  );
+ );
 
-$this->report=array(
-  array('label'=>'Allocations','url'=>array('profile/printIndex')),
-  );
 	?>
 
-	<h1><?php echo $model->getFullname();
-        if($type==='Student')
-        echo Timeline::getSponsoredYears($application->Id); ?></h1>
-    
+	<h1>
+	<?php echo $model->getFullname();
+		if($type==='Student')
+			echo Timeline::getSponsoredYears($application->Id);
+		else if($type === 'Alumni')
+			echo ' ('. $model->YearStarted. '-'.$model->YearEnded.')';
+	?>
+	</h1>
+	<?php echo $model->Honor;?>
 <?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'myModal')); ?>
  
 <!-- <div class="modal-header">
@@ -141,13 +142,7 @@ $this->report=array(
             ),
             'visible'=>($type === "Student"),
         ),
-        array(
-            'name' => 'Address',
-            'editable' => array(
-                'type'       => 'text',
-                'placement' => 'right',           
-            ),
-        ),
+ 
         array(
             'name' => 'ContactNumber',
             'editable' => array(
@@ -163,17 +158,28 @@ $this->report=array(
 
             ),
         ), 
-        //array(
-          //  'name'=>'Occupation',
-           // 'visible'=>($type === "Student"),
-          //  ),
+		
+		
+        array(
+            'name'=>'Occupation',
+            'visible'=>($type === "Alumni"),
+           ),
         array(
             'name'=>'FuturePlan',
-            'visible'=>($type === "Student"),
-            ),
+			'label'=>($type === 'Student') ? 'FuturePlan' : 'Remarks'
+            ),	
+		array(
+            'name'=>'School',
+			'value'=>School::getSchool($model->Id)
+            ),	
+		array(
+            'name'=>'Course',
+			'value'=>Application::getCourse($model->Id)
+            ),		
     )
     ));
 ?>
+
 <?php if($type === "Student") : ?>
 <h1>Application Details</h1>
 <?php 
