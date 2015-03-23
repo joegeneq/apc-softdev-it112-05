@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2015 at 06:50 AM
+-- Generation Time: Mar 21, 2015 at 04:35 PM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -133,14 +133,15 @@ CREATE TABLE IF NOT EXISTS `announcement` (
   `Subject` varchar(150) NOT NULL,
   `message_box` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `announcement`
 --
 
 INSERT INTO `announcement` (`id`, `Subject`, `message_box`) VALUES
-(1, 'Meeting!', 'Hi scholars!');
+(1, 'Meeting!', 'Hi scholars!'),
+(2, 'Reuninon', 'Hi friends!');
 
 -- --------------------------------------------------------
 
@@ -157,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `application` (
   `User_Id` int(11) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `fk_Application_User1_idx` (`User_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `application`
@@ -194,7 +195,9 @@ INSERT INTO `application` (`Id`, `TypeOfApplication`, `Course`, `Duration`, `Spo
 (28, 'College', 'Law', '4', 1, 30),
 (29, 'College', 'AB Literature', '4', 1, 32),
 (30, 'College', 'IT', '3', 1, 35),
-(31, 'College', 'IT', '', 1, 36);
+(31, 'College', 'IT', '', 1, 36),
+(32, '', 'dsadsa', '', 0, 47),
+(33, '', 'dsadsa', '', 0, 48);
 
 -- --------------------------------------------------------
 
@@ -216,6 +219,17 @@ CREATE TABLE IF NOT EXISTS `authassignment` (
 
 INSERT INTO `authassignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
 ('admin', '1', NULL, 'N;'),
+('Alumni', '37', NULL, NULL),
+('Alumni', '38', NULL, NULL),
+('Alumni', '39', NULL, NULL),
+('Alumni', '40', NULL, NULL),
+('Alumni', '41', NULL, NULL),
+('Alumni', '42', NULL, NULL),
+('Alumni', '43', NULL, NULL),
+('Alumni', '44', NULL, NULL),
+('Alumni', '45', NULL, NULL),
+('Alumni', '46', NULL, NULL),
+('Alumni', '48', NULL, NULL),
 ('Coordinator', '29', NULL, NULL),
 ('Coordinator', '31', NULL, NULL),
 ('Coordinator', '33', NULL, NULL),
@@ -450,7 +464,7 @@ CREATE TABLE IF NOT EXISTS `partnerschool` (
   PRIMARY KEY (`Id`),
   KEY `fk_School_has_User_User1_idx` (`User_Id`),
   KEY `fk_School_has_User_School1_idx` (`School_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=48 ;
 
 --
 -- Dumping data for table `partnerschool`
@@ -491,7 +505,19 @@ INSERT INTO `partnerschool` (`Id`, `School_Id`, `User_Id`) VALUES
 (32, 23, 33),
 (33, 3, 34),
 (34, 8, 35),
-(35, 4, 36);
+(35, 4, 36),
+(36, 11, 37),
+(37, 8, 38),
+(38, 9, 39),
+(39, 12, 40),
+(40, 13, 41),
+(41, 14, 42),
+(42, 14, 43),
+(43, 13, 44),
+(44, 17, 45),
+(45, 15, 46),
+(46, 15, 47),
+(47, 15, 48);
 
 -- --------------------------------------------------------
 
@@ -517,51 +543,66 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `Occupation` varchar(45) DEFAULT NULL,
   `CompanyName` varchar(45) DEFAULT NULL,
   `FuturePlan` longtext,
+  `YearStarted` year(4) NOT NULL,
+  `YearEnded` year(4) NOT NULL,
+  `Honor` varchar(45) NOT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Email_UNIQUE` (`Email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
 
 --
 -- Dumping data for table `profile`
 --
 
-INSERT INTO `profile` (`Id`, `Lastname`, `Firstname`, `Middlename`, `Religion`, `Sex`, `DateOfBirth`, `PlaceOfBirth`, `Address`, `ContactNumber`, `Email`, `DateCreated`, `DateUpdate`, `CivilStatus`, `Occupation`, `CompanyName`, `FuturePlan`) VALUES
-(1, 'Delos Reyes', 'John Edward', '', 'Christian', 1, '1993-11-05', '', 'Manila', '09221234567', 'jddelosreyes@apc.edu.ph', '2014-02-13', '2014-02-14 12:42:43', '', 'Administrator', NULL, 'None so far'),
-(2, 'Salas', 'Marz Kimberly', 'Tamba', 'Roman Catholic', 0, '1995-07-07', 'Bacolod City', '1 Roxas Ave. Prk. Mahida-iton Brgy. 39 Bacolod City', '09465070044', 'kimsalas@gmail.com', '1970-01-01', '2014-04-28 17:54:10', 'Single', NULL, NULL, ''),
-(3, 'Serfino', 'Sherlyn', 'Tayco', 'Roman Catholic', 0, '1970-01-01', 'Balabac, Palawan', '#46-Bonifacio street kabankalan City Negros, Occidental', '09286213436', '*@yahoo.com', '1970-01-01', '2014-05-01 06:19:11', 'Single', NULL, NULL, ''),
-(4, 'Hinolan', 'Catherine Keth ', 'Redil', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Lot 30 Block 9 Gardenville Subd. Tangulo Bacolod City', '4442686', '_______@yahoo.com', '1970-01-01', '2014-05-01 06:30:29', 'Single', NULL, NULL, ''),
-(5, 'Genogaling', 'Azalea ', 'Baguna', 'Roman Catholic', 0, '1970-01-01', 'Alabang Muntinlupa City', 'Prk. Sab Roque Tangub Bacolod City', '09077462020', '______@yahoo.com', '1970-01-01', '2014-05-01 06:38:37', 'Single', NULL, NULL, ''),
-(6, 'Eguiso', 'Jessa ', 'Enteria', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. Sigay Brgy. 2 Bacolod City', '09123577577', 'eguiso.jessa@gmail.com', '1970-01-01', '2014-05-01 06:40:57', 'Single', NULL, NULL, ''),
-(7, 'Ligahon', 'Jenny ', 'Lupo', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. Kabugwason Brgy. Mansilingan Bacolod City', '09072096285', '__@gmail.com', '1970-01-01', '2014-05-01 06:43:48', 'Single', NULL, NULL, ''),
-(8, 'Sun', 'Thea Christine', 'Alima', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Sam Village Brgy. Granada Bacolod City', '09109944439', '_____@yahoo.com', '1970-01-01', '2014-05-01 06:46:01', 'Single', NULL, NULL, ''),
-(9, 'Perez', 'Teozon Joy', 'De arroz', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. Nami-Nami Brgy. Banago Bacolod City ', '4410787', '____@yahoo.com', '1970-01-01', '2014-05-01 06:48:39', 'Single', NULL, NULL, ''),
-(10, 'Pastor', 'Chreszea', 'Jaud', 'Roman Catholic', 0, '1970-01-01', 'Valladolid', 'Sitio himaya Brgy. Sagua Banwa Villadolid Negros Occidental', '09301665163', '___@yahoo.com', '1970-01-01', '2014-05-01 06:52:30', 'Single', NULL, NULL, ''),
-(11, 'Sayco', 'Melgie May', 'Francisco', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Brgy. 35 Prk. Malipayon B.C', '09983571498', '__@yahoo.com', '1970-01-01', '2014-05-01 06:56:21', 'Single', NULL, NULL, ''),
-(12, 'Cuaycong', 'Nina', 'Tongcua', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. 2 Alunan St. Brgy. Granada Bacolod City', '09083499738', '_@yahoo.com', '1970-01-01', '2014-05-01 06:59:31', 'Single', NULL, NULL, ''),
-(13, 'Latergo', 'Rica Vanessa', 'Villacuatro', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Phase 6 B, Prk. Sto. Nino Blk. 31 lot 11 Brgy. handumana Bacolod City', '09465790404', '_@gmail.com', '1970-01-01', '2014-05-01 07:02:59', 'Single', NULL, NULL, ''),
-(14, 'Albaciete', 'Felicisimo Jr', 'Giltendez', 'Roman Catholic', 1, '1970-01-01', 'Bacolod City', 'Prk Tinagong Paraiso brgy. Banago Bacolod City', '09129813718', '****@yahoo.com', '1970-01-01', '2014-05-01 07:09:07', 'Single', NULL, NULL, ''),
-(15, 'Delicano', 'Noben Jude', 'Fernandez', 'Roman Catholic', 1, '1970-01-01', 'Hinigaran', 'Prk. Maninihon Brgy. Miranda Pontevedra Negros Occidental', '00000', '***@yahoo.com', '1970-01-01', '2014-05-01 07:13:01', 'Single', NULL, NULL, ''),
-(16, 'Valenzuela', 'Lira Joie', 'Mabunay', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. Sto Domingo Brgy. Banago Bacolod City', '09484438796', '**@gmail.com', '1970-01-01', '2014-05-01 07:20:12', 'Single', NULL, NULL, ''),
-(17, 'Jardaleza', 'Jenezeal marie', 'Talisa', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. 14 Brgy. Alangilan Bacolod City', '09208545446', 'jenmarie@yahoo.com', '1970-01-01', '2014-05-01 07:24:21', 'Single', NULL, NULL, ''),
-(18, 'Pahila', 'Pearl Marie', 'Serenas', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. Cabalagnan Brgy. Tangub Bacolod City', '09207515081', 'pahilapearl@gmail.com', '1970-01-01', '2014-05-01 07:27:00', 'Single', NULL, NULL, ''),
-(19, 'Subebe', 'Pinky', 'Labrador', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Phase 6 Blk. 31 lot 14 Brgy. Handumanan Bacolod City', '0000', 'subebepinky@yahoo.com', '1970-01-01', '2014-05-01 07:29:28', 'Single', NULL, NULL, ''),
-(21, 'Las ', 'Christian', 'Delos Santos', 'Roman Catholic', 1, '1970-01-01', 'Quezon City', 'Brgy. Talabaan Cadiz City Negros Occidental', '00000', 'christian_las@yahoo.com', '1970-01-01', '2014-05-01 07:32:19', 'Single', NULL, NULL, ''),
-(22, 'Layes', 'Emily', 'Fajemolin', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Zone 3 Prk. riverside Brgy. Banago Bacolod City', '000000', 'emlayes@yahoo.com', '1970-01-01', '2014-05-01 07:35:18', 'Single', NULL, NULL, ''),
-(23, 'Nanquil', 'Riza Joy ', 'Camacho', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. Santol Brgy Mandalagan Bacolod City', '00000', '_**@yahoo.com', '1970-01-01', '2014-05-01 07:37:26', 'Single', NULL, NULL, ''),
-(24, 'Villalon', 'Patricia', 'Apura', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', '7 J. Binas St Kahirup A, Brgy Mansilingan, B.C', '7070048', '__*@yahoo.com', '1970-01-01', '2014-05-01 07:48:05', 'Single', NULL, NULL, ''),
-(25, 'Sasi ', 'Maria Juela', 'Jusga', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Purok linya Brgy Cabug Bacolod City', '00000', 'juela@yahoo.com', '1970-01-01', '2014-05-01 07:54:17', 'Single', NULL, NULL, ''),
-(26, 'tedoco', 'Jacqueline', 'Chua', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'San Roque Tangub Bacolod City Negros Occidental', '00000', '_*@yahoo.com', '1970-01-01', '2014-05-01 07:57:30', 'Single', NULL, NULL, ''),
-(27, 'Delatina', 'Maria Joyce', 'Escobar', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Menlo Village talisay City Negros Occidental', '09094389161', '*******@yahoo.com', '1970-01-01', '2014-05-01 08:00:07', 'Single', NULL, NULL, ''),
-(28, 'Bebing', 'Maiyenn', 'Magno', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', '51 St. Galo Mabini Bacolod City', '09478911824', '******@yahoo.com', '1970-01-01', '2014-05-01 08:02:07', 'Single', NULL, NULL, ''),
-(29, 'Lumayno', 'Tricia Ann ', 'Olimpo', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', '7B Delara St. Murcia Negros Occidental', '09235806668', '*****@yahoo.com', '1970-01-01', '2014-05-01 08:05:59', 'Single', NULL, NULL, ''),
-(30, 'Lubrio', 'Jessan', 'Arreza', '', 1, '1970-01-01', '', 'Cavite', '09191234567', 'calubrio@apc.edu.ph', '2014-05-02', '2014-05-02 04:37:52', 'Single', NULL, NULL, ''),
-(31, 'Brando', 'Dio', 'Joestar', 'Atheist', 1, '1970-01-01', 'London, England', 'Joestar Manor, London, England', '09175110623', 'wrrymail@gmail.com', '2014-05-02', '2014-05-02 06:45:35', 'Single', NULL, NULL, ''),
-(32, 'Joestar', 'George', 'Steak', '', 1, '1970-01-01', '', 'Joestar Manor, London, England', '09158976245', 'howdoyoulikeyoursteak@moo.com', '2014-05-02', '2014-05-02 06:49:09', 'Married', NULL, NULL, ''),
-(33, 'Mesina', 'Leon Jordan', 'J.', 'Catholic', 1, '1970-01-01', 'Quezon City', 'Blk 16 lt. 11 QC Ville 1 Central Ave,Diliman Quezon city', '09175110623', 'ljmesina@apc.edu.ph', '2014-05-19', '2014-05-19 03:36:09', 'Single', NULL, NULL, ''),
-(34, 'Galan', 'Sarah', 'M.', '', 0, '1981-11-12', '', 'Assisi Development Foundation Incorporated', '09232996239', 'sar_moresca@yahoo.com', '2014-05-19', '2014-05-19 03:42:01', 'Married', NULL, NULL, ''),
-(35, 'Almazan', 'Jeff Bryan', 'Talatagod', '', 1, '1970-01-01', '', 'Alabang', '5051735', 'jtalmazan113@gmail.com', '2015-02-28', '2015-02-28 06:53:42', 'Single', NULL, NULL, ''),
-(36, 'Almazan', 'Jeff', 'Talatagod', 'Roman Catholic', 1, '1970-01-01', 'Manila', 'Alabang', '0906754495', 'jeffbryan18@gmail.com', '2015-03-04', '2015-03-04 11:37:19', 'Single', NULL, NULL, ''),
-(37, 'Abrenica', 'Jeff Bryanttt', 'Talatagod', '', 1, '1970-01-01', '', 'Bicutan', '09067554495', 'jeffbryan_almazan@yahoo.com', '2015-03-17', '2015-03-17 15:13:37', 'Single', NULL, NULL, '');
+INSERT INTO `profile` (`Id`, `Lastname`, `Firstname`, `Middlename`, `Religion`, `Sex`, `DateOfBirth`, `PlaceOfBirth`, `Address`, `ContactNumber`, `Email`, `DateCreated`, `DateUpdate`, `CivilStatus`, `Occupation`, `CompanyName`, `FuturePlan`, `YearStarted`, `YearEnded`, `Honor`) VALUES
+(1, 'Delos Reyes', 'John Edward', '', 'Christian', 1, '1993-11-05', '', 'Manila', '09221234567', 'jddelosreyes@apc.edu.ph', '2014-02-13', '2014-02-14 12:42:43', '', 'Administrator', NULL, 'None so far', 0000, 0000, ''),
+(2, 'Salas', 'Marz Kimberly', 'Tamba', 'Roman Catholic', 0, '1995-07-07', 'Bacolod City', '1 Roxas Ave. Prk. Mahida-iton Brgy. 39 Bacolod City', '09465070044', 'kimsalas@gmail.com', '1970-01-01', '2014-04-28 17:54:10', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(3, 'Serfino', 'Sherlyn', 'Tayco', 'Roman Catholic', 0, '1970-01-01', 'Balabac, Palawan', '#46-Bonifacio street kabankalan City Negros, Occidental', '09286213436', '*@yahoo.com', '1970-01-01', '2014-05-01 06:19:11', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(4, 'Hinolan', 'Catherine Keth ', 'Redil', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Lot 30 Block 9 Gardenville Subd. Tangulo Bacolod City', '4442686', '_______@yahoo.com', '1970-01-01', '2014-05-01 06:30:29', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(5, 'Genogaling', 'Azalea ', 'Baguna', 'Roman Catholic', 0, '1970-01-01', 'Alabang Muntinlupa City', 'Prk. Sab Roque Tangub Bacolod City', '09077462020', '______@yahoo.com', '1970-01-01', '2014-05-01 06:38:37', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(6, 'Eguiso', 'Jessa ', 'Enteria', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. Sigay Brgy. 2 Bacolod City', '09123577577', 'eguiso.jessa@gmail.com', '1970-01-01', '2014-05-01 06:40:57', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(7, 'Ligahon', 'Jenny ', 'Lupo', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. Kabugwason Brgy. Mansilingan Bacolod City', '09072096285', '__@gmail.com', '1970-01-01', '2014-05-01 06:43:48', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(8, 'Sun', 'Thea Christine', 'Alima', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Sam Village Brgy. Granada Bacolod City', '09109944439', '_____@yahoo.com', '1970-01-01', '2014-05-01 06:46:01', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(9, 'Perez', 'Teozon Joy', 'De arroz', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. Nami-Nami Brgy. Banago Bacolod City ', '4410787', '____@yahoo.com', '1970-01-01', '2014-05-01 06:48:39', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(10, 'Pastor', 'Chreszea', 'Jaud', 'Roman Catholic', 0, '1970-01-01', 'Valladolid', 'Sitio himaya Brgy. Sagua Banwa Villadolid Negros Occidental', '09301665163', '___@yahoo.com', '1970-01-01', '2014-05-01 06:52:30', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(11, 'Sayco', 'Melgie May', 'Francisco', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Brgy. 35 Prk. Malipayon B.C', '09983571498', '__@yahoo.com', '1970-01-01', '2014-05-01 06:56:21', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(12, 'Cuaycong', 'Nina', 'Tongcua', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. 2 Alunan St. Brgy. Granada Bacolod City', '09083499738', '_@yahoo.com', '1970-01-01', '2014-05-01 06:59:31', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(13, 'Latergo', 'Rica Vanessa', 'Villacuatro', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Phase 6 B, Prk. Sto. Nino Blk. 31 lot 11 Brgy. handumana Bacolod City', '09465790404', '_@gmail.com', '1970-01-01', '2014-05-01 07:02:59', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(14, 'Albaciete', 'Felicisimo Jr', 'Giltendez', 'Roman Catholic', 1, '1970-01-01', 'Bacolod City', 'Prk Tinagong Paraiso brgy. Banago Bacolod City', '09129813718', '****@yahoo.com', '1970-01-01', '2014-05-01 07:09:07', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(15, 'Delicano', 'Noben Jude', 'Fernandez', 'Roman Catholic', 1, '1970-01-01', 'Hinigaran', 'Prk. Maninihon Brgy. Miranda Pontevedra Negros Occidental', '00000', '***@yahoo.com', '1970-01-01', '2014-05-01 07:13:01', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(16, 'Valenzuela', 'Lira Joie', 'Mabunay', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. Sto Domingo Brgy. Banago Bacolod City', '09484438796', '**@gmail.com', '1970-01-01', '2014-05-01 07:20:12', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(17, 'Jardaleza', 'Jenezeal marie', 'Talisa', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. 14 Brgy. Alangilan Bacolod City', '09208545446', 'jenmarie@yahoo.com', '1970-01-01', '2014-05-01 07:24:21', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(18, 'Pahila', 'Pearl Marie', 'Serenas', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. Cabalagnan Brgy. Tangub Bacolod City', '09207515081', 'pahilapearl@gmail.com', '1970-01-01', '2014-05-01 07:27:00', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(19, 'Subebe', 'Pinky', 'Labrador', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Phase 6 Blk. 31 lot 14 Brgy. Handumanan Bacolod City', '0000', 'subebepinky@yahoo.com', '1970-01-01', '2014-05-01 07:29:28', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(21, 'Las ', 'Christian', 'Delos Santos', 'Roman Catholic', 1, '1970-01-01', 'Quezon City', 'Brgy. Talabaan Cadiz City Negros Occidental', '00000', 'christian_las@yahoo.com', '1970-01-01', '2014-05-01 07:32:19', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(22, 'Layes', 'Emily', 'Fajemolin', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Zone 3 Prk. riverside Brgy. Banago Bacolod City', '000000', 'emlayes@yahoo.com', '1970-01-01', '2014-05-01 07:35:18', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(23, 'Nanquil', 'Riza Joy ', 'Camacho', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. Santol Brgy Mandalagan Bacolod City', '00000', '_**@yahoo.com', '1970-01-01', '2014-05-01 07:37:26', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(24, 'Villalon', 'Patricia', 'Apura', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', '7 J. Binas St Kahirup A, Brgy Mansilingan, B.C', '7070048', '__*@yahoo.com', '1970-01-01', '2014-05-01 07:48:05', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(25, 'Sasi ', 'Maria Juela', 'Jusga', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Purok linya Brgy Cabug Bacolod City', '00000', 'juela@yahoo.com', '1970-01-01', '2014-05-01 07:54:17', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(26, 'tedoco', 'Jacqueline', 'Chua', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'San Roque Tangub Bacolod City Negros Occidental', '00000', '_*@yahoo.com', '1970-01-01', '2014-05-01 07:57:30', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(27, 'Delatina', 'Maria Joyce', 'Escobar', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Menlo Village talisay City Negros Occidental', '09094389161', '*******@yahoo.com', '1970-01-01', '2014-05-01 08:00:07', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(28, 'Bebing', 'Maiyenn', 'Magno', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', '51 St. Galo Mabini Bacolod City', '09478911824', '******@yahoo.com', '1970-01-01', '2014-05-01 08:02:07', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(29, 'Lumayno', 'Tricia Ann ', 'Olimpo', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', '7B Delara St. Murcia Negros Occidental', '09235806668', '*****@yahoo.com', '1970-01-01', '2014-05-01 08:05:59', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(30, 'Lubrio', 'Jessan', 'Arreza', '', 1, '1970-01-01', '', 'Cavite', '09191234567', 'calubrio@apc.edu.ph', '2014-05-02', '2014-05-02 04:37:52', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(31, 'Brando', 'Dio', 'Joestar', 'Atheist', 1, '1970-01-01', 'London, England', 'Joestar Manor, London, England', '09175110623', 'wrrymail@gmail.com', '2014-05-02', '2014-05-02 06:45:35', 'Single', NULL, NULL, 'DASDAS', 2010, 2014, 'Cumlaude'),
+(32, 'Joestar', 'George', 'Steak', '', 1, '1970-01-01', '', 'Joestar Manor, London, England', '09158976245', 'howdoyoulikeyoursteak@moo.com', '2014-05-02', '2014-05-02 06:49:09', 'Married', NULL, NULL, '', 0000, 0000, ''),
+(33, 'Mesina', 'Leon Jordan', 'J.', 'Catholic', 1, '1970-01-01', 'Quezon City', 'Blk 16 lt. 11 QC Ville 1 Central Ave,Diliman Quezon city', '09175110623', 'ljmesina@apc.edu.ph', '2014-05-19', '2014-05-19 03:36:09', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(34, 'Galan', 'Sarah', 'M.', '', 0, '1981-11-12', '', 'Assisi Development Foundation Incorporated', '09232996239', 'sar_moresca@yahoo.com', '2014-05-19', '2014-05-19 03:42:01', 'Married', NULL, NULL, '', 0000, 0000, ''),
+(35, 'Almazan', 'Jeff Bryan', 'Talatagod', '', 1, '1970-01-01', '', 'Alabang', '5051735', 'jtalmazan113@gmail.com', '2015-02-28', '2015-02-28 06:53:42', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(36, 'Almazan', 'Jeff', 'Talatagod', 'Roman Catholic', 1, '1970-01-01', 'Manila', 'Alabang', '0906754495', 'jeffbryan18@gmail.com', '2015-03-04', '2015-03-04 11:37:19', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(37, 'Abrenica', 'Jeff Bryanttt', 'Talatagod', '', 1, '1970-01-01', '', 'Bicutan', '09067554495', 'jeffbryan_almazan@yahoo.com', '2015-03-17', '2015-03-17 15:13:37', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(38, 'Espartero', 'Rodolfe', 'Jomari', 'Catholic', 1, '1970-01-01', 'Manila', '', '09067554498', 'ladaga.digna@mdc.com.ph', '2015-03-21', '2015-03-21 12:49:09', 'Single', NULL, NULL, 'dsd', 2010, 2011, ''),
+(39, 'dasd', 'dsad', 'dsa', 'dsa', 0, '1970-01-01', 'dsa', '', '1231', 'dsa@dslak.com', '2015-03-21', '2015-03-21 12:53:33', 'Single', NULL, NULL, '', 2010, 2011, ''),
+(40, 'dasda', 'dsa', 'dsa', 'dsadasda', 1, '1970-01-01', 'asda', '', '132', 'asdsa@adsa.com', '2015-03-21', '2015-03-21 12:56:34', 'Married', NULL, NULL, '', 0000, 0000, 'addasdasd'),
+(41, 'xas', 'dasdas', 'asdas', 'dsa', 0, '1970-01-01', 'dsa', '', '321', 'dsa@dsladsak.com', '2015-03-21', '2015-03-21 13:00:23', 'Single', NULL, NULL, '', 0000, 0000, 'adasdasfasfas'),
+(42, 'dsada', 'dsa', 'dsa', 'sdasda', 1, '1970-01-01', 'adsa', '', '213', 'adamlloydsa22@yahoo.com', '2015-03-21', '2015-03-21 13:02:19', 'Married', NULL, NULL, '', 2010, 2010, 'dsadada'),
+(43, 'dsada', 'dsa', 'dsa', 'dsa', 0, '1970-01-01', 'dsa', '', '23', 'dsada@asda.com', '2015-03-21', '2015-03-21 13:22:27', 'Married', NULL, NULL, '', 0000, 2132, 'dsa'),
+(44, 'sada', 'dsa', 'das', 'dsa', 0, '1970-01-01', 'dsa', '', 'dsa', 'jeffbryan_dsaalmazan@yahoo.com', '2015-03-21', '2015-03-21 13:24:11', 'Married', NULL, NULL, '', 2132, 0000, 'dsa'),
+(45, 'dsa', 'dsa', 'dsa', 'ada', 0, '1970-01-01', 'dsa', '', '213', 'Dawn_lucdsaas24@yahoo.com', '2015-03-21', '2015-03-21 13:28:20', 'Single', NULL, NULL, '', 0000, 0000, 'dsa'),
+(46, 'dasda', 'dsa', 'dsa', 'dsa', 1, '1970-01-01', 'dsa', '', 'dsa', 'dsa@dsadsladsak.com', '2015-03-21', '2015-03-21 13:28:48', 'Married', NULL, NULL, '', 0000, 0000, 'dsa'),
+(47, 'dsada', 'dsa', 'dsa', 'dsada', 0, '1970-01-01', 'dsada', '', '1231', 'dsdasda@dsadsladsak.com', '2015-03-21', '2015-03-21 13:29:33', 'Single', NULL, NULL, '', 0000, 0000, 'das'),
+(48, 'dsadadsad', 'sdsa', 'dsa', 'dsa', 0, '1970-01-01', 'dsa', '', 'das', 'Daniel-cdasdasuevas@yahoo.com', '2015-03-21', '2015-03-21 13:32:08', 'Single', NULL, NULL, '', 0000, 0000, 'dsad'),
+(49, 'dsadadsad', 'sdsa', 'dsa', 'dsa', 0, '1970-01-01', 'dsa', '', 'das', 'Daniel-cdsdasdaasdasuevas@yahoo.com', '2015-03-21', '2015-03-21 13:33:14', 'Single', NULL, NULL, '', 0000, 0000, 'dsad');
 
 -- --------------------------------------------------------
 
@@ -586,7 +627,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(45) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `role`
@@ -677,20 +718,13 @@ CREATE TABLE IF NOT EXISTS `sys_table` (
   `Role_Id` int(11) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `fk_sys_Table_Role1_idx` (`Role_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `sys_table`
 --
 
 INSERT INTO `sys_table` (`Id`, `FieldName`, `Role_Id`) VALUES
-(1, 'Lastname', 2),
-(2, 'Firstname', 2),
-(3, 'Middlename', 2),
-(4, 'Sex', 2),
-(5, 'ContactNumber', 2),
-(6, 'Email', 2),
-(7, 'DateCreated', 2),
 (9, 'Lastname', 3),
 (10, 'Firstname', 3),
 (11, 'Middlename', 3),
@@ -698,7 +732,6 @@ INSERT INTO `sys_table` (`Id`, `FieldName`, `Role_Id`) VALUES
 (13, 'Sex', 3),
 (14, 'DateOfBirth', 3),
 (15, 'PlaceOfBirth', 3),
-(16, 'Address', 3),
 (17, 'ContactNumber', 3),
 (18, 'Email', 3),
 (19, 'DateUpdate', 3),
@@ -709,13 +742,15 @@ INSERT INTO `sys_table` (`Id`, `FieldName`, `Role_Id`) VALUES
 (24, 'Sex', 4),
 (25, 'DateOfBirth', 4),
 (26, 'PlaceOfBirth', 4),
-(27, 'Address', 4),
 (28, 'ContactNumber', 4),
 (29, 'Email', 4),
 (30, 'FuturePlan', 4),
-(31, 'CivilStatus', 2),
 (32, 'CivilStatus', 3),
-(33, 'Address', 2);
+(34, 'Course', 4),
+(35, 'Honor', 4),
+(36, 'YearStarted', 4),
+(37, 'YearEnded', 4),
+(38, 'CivilStatus', 4);
 
 -- --------------------------------------------------------
 
@@ -760,7 +795,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`Id`),
   KEY `fk_User_Profile1_idx` (`Profile_Id`),
   KEY `fk_User_Role1_idx` (`Role_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
 
 --
 -- Dumping data for table `user`
@@ -793,16 +828,28 @@ INSERT INTO `user` (`Id`, `Username`, `Password`, `Profile_Id`, `Role_Id`) VALUE
 (24, 'msasi', '$2QOWjfCyqfvw', 25, 3),
 (25, 'jtedoco', '$2FeRLpvAfb6I', 26, 3),
 (26, 'mdelatina', '$2q2ZrVeDMQHk', 27, 3),
-(27, 'mbebing', '$2vJZwHKljNwE', 28, 3),
-(28, 'tlumayno', '$2CZ.y6jgw.XE', 29, 3),
+(27, 'mbebing', '$2vJZwHKljNwE', 28, 4),
+(28, 'tlumayno', '$2CZ.y6jgw.XE', 29, 4),
 (29, 'jlubrio', '$2nUotZpPa8fM', 30, 2),
-(30, 'dbrando', '$2rSzrBA3PacY', 31, 3),
+(30, 'dbrando', '$2rSzrBA3PacY', 31, 4),
 (31, 'gjoestar', '$2t/8Nf0pc./Y', 32, 2),
 (32, 'lmesina', '$2pWKc5JRwB2k', 33, 3),
 (33, 'vmesina', '$2.VQz1WrYyQs', 34, 2),
 (34, 'jalmazan', '$2Yya3RYYteJ6', 35, 2),
 (35, 'ealmazan', '$2CHcwB21.4wc', 36, 3),
-(36, 'falmazan', '$2chnd3bR8saE', 37, 3);
+(36, 'falmazan', '$2chnd3bR8saE', 37, 4),
+(37, 'respartero', '$2uBP1CLvTK0s', 38, 4),
+(38, 'ddasd', '$2n8mRHKoh5qo', 39, 4),
+(39, 'ddasda', '$2XencD6oIDf2', 40, 4),
+(40, 'dxas', '$2DwMiKmMZbw6', 41, 4),
+(41, 'ddsada', '$2rZbzzGt4QAA', 42, 4),
+(42, 'sdsada', '$2BnivFkU3WX2', 43, 4),
+(43, 'dsada', '$2F08X3yWRBDI', 44, 4),
+(44, 'ddsa', '$2QVIh7YLhnJw', 45, 4),
+(45, 'sdasda', '$2R3fuQz/yQDA', 46, 4),
+(46, 'adsada', '$2IZEfjGXPp0E', 47, 4),
+(47, 'sdsadadsad', '$2dDwJQfNv5dA', 48, 4),
+(48, 'ddsadadsad', '$2AyCUAxP.oGg', 49, 4);
 
 --
 -- Constraints for dumped tables

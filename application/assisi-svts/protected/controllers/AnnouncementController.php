@@ -116,13 +116,16 @@ class AnnouncementController extends Controller
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
-
 	/**
 	 * Lists all models.
 	 */
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Announcement');
+		if(Yii::app()->session['Role'] !=='Admin')
+			$this->layout='column1';
+		else
+			$this->layout='column2';
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
