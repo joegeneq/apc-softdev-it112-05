@@ -2,15 +2,12 @@
 /* @var $this ProfileController */
 /* @var $model Profile */
 $this->menu=array(
-  array('label'=>'Scholars','url'=>array('profile/admin','type'=>'Student'),'active'=>($_GET['type']==='Student')),
+		array('label'=>'Scholars','url'=>array('profile/admin','type'=>'Student'),'visible'=>Yii::app()->user->checkAccess('profile/admin')),
+	array('label'=>'Graduates','url'=>array('profile/admin','type'=>'Alumni'),'visible'=>Yii::app()->user->checkAccess('profile/admin')),
+	array('label'=>'Schools','url'=>array('school/admin'),'visible'=>Yii::app()->user->checkAccess('school/admin')),
+	array('label'=>'Grades','url'=>array('grades/admin'),'visible'=>Yii::app()->user->checkAccess('school/admin')),
+  );
 
-  array('label'=>'Schools','url'=>array('school/admin')),
-  array('label'=>'Grades','url'=>array('grades/admin')),
-  array('label'=>'Sponsors','url'=>array('sponsor/admin')),
-  );
-$this->report=array(
-  array('label'=>'Allocations','url'=>array('profile/printIndex')),
-  );
 Yii::app()->clientScript->registerScript('search', "
   $('.search-form form').submit(function(){
     $('#profile-grid').yiiGridView('update', {
