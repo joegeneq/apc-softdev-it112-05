@@ -36,6 +36,11 @@ class School extends CActiveRecord
 		}
 		return $names;
 	}
+	
+	public function getSchool($id){
+		$profile = Profile::model()->findByPk($id);
+		return $profile->users[0]->partnerschools[0]->school->Name;
+	}
 
 	public function GetSchoolsNoCoordinator()
 	{
