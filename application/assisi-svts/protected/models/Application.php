@@ -32,8 +32,8 @@ class Application extends CActiveRecord
 		$criteria=new CDbCriteria;
 		$criteria->join = "LEFT JOIN user u ON  u.Id = t.User_Id
 						   LEFT JOIN partnerschool ps ON ps.User_Id = u.Id";
-		$criteria->condition =  "Role_Id=:role AND ps.School_Id=:school";
-		$criteria->params = array('role'=>$role->Id,':school'=>$id);
+		$criteria->condition =  "Role_Id=:role";
+		$criteria->params = array('role'=>$role->Id);
 		return CHtml::listData(Application::model()->findAll($criteria),'Id','Fullname'); 
 	}
 	
@@ -48,6 +48,11 @@ class Application extends CActiveRecord
 		$partnerschool= Partnerschool::model()->findByAttributes(array('User_Id'=>$this->user->Id));
 		return $partnerschool->school->Name;
 	}
+	
+	public function getCourse($id){
+		$profile = Profile::model()->findByPk($id);
+		return $profile->users[0]->applications[0]->Course;
+	}
 
 	/**
 	 * @return array validation rules for model attributes.
@@ -57,7 +62,7 @@ class Application extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('TypeOfApplication, Course', 'required'),
+			array('TypeOfApplication, Course', 'required', 'on'=>'student'),
 			array('SponsoredYears, User_Id', 'numerical', 'integerOnly'=>true),
 			array('TypeOfApplication', 'length', 'max'=>45),
 			array('Course', 'ext.alpha'),
