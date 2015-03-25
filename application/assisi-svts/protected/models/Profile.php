@@ -18,6 +18,13 @@
  * @property string $FuturePlan
  * @property string $DateCreated
  * @property string $DateUpdate
+ * @property string $CivilStatus
+ * @property string $Occupation
+ * @property string $CompanyName
+ * @property string $FuturePlan
+ * @property string $YearStarted
+ * @property string $YearEnded
+ * @property string $Honor
  *
  * The followings are the available model relations:
  * @property User[] $users
@@ -50,7 +57,7 @@ class Profile extends CActiveRecord
 		return array(
 			'Single'=>'Single',
 			'Married'=>'Married',
-			'Widow/er'=>'Widow/er',
+			'Widow/er'=>'Widower',
 			'Separated'=>'Separated'
 			);
 	}
@@ -69,7 +76,7 @@ class Profile extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Lastname, Firstname, Sex, ContactNumber, Email, Address ,CivilStatus', 'required'),
+			array('Lastname, Firstname, Sex, ContactNumber, Email, CivilStatus', 'required'),
 			array('Sex', 'numerical', 'integerOnly'=>true),
 			array('Lastname, Firstname, CivilStatus', 'ext.alpha'),
 			array('Middlename', 'length', 'max'=>30),
@@ -81,6 +88,9 @@ class Profile extends CActiveRecord
 			array('Email', 'email'),
 			array('Email', 'unique','message'=>'Email already exists!'),  
 			array('DateOfBirth, FuturePlan, DateUpdate', 'safe'),
+			array('CivilStatus', 'length', 'max'=>20),
+			array('YearStarted, YearEnded', 'length', 'max'=>4),
+			array('DateOfBirth, DateUpdate, FuturePlan', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('keyword', 'safe', 'on'=>'search'),
@@ -118,9 +128,12 @@ class Profile extends CActiveRecord
 			'Address' => 'Address',
 			'ContactNumber' => 'Contact Number',
 			'Email' => 'Email',
-			'FuturePlan' => 'Future Plan',
+			'FuturePlan' => 'Message for us',
 			'DateCreated' => 'Date Created',
 			'DateUpdate' => 'Date Update',
+			'YearStarted'=>'Year Started',
+			'YearEnded'=>'Year Ended',
+			'Honor' => 'Honor Acquired'
 			);
 	}
 
