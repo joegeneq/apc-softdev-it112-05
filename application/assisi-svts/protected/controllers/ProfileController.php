@@ -108,20 +108,20 @@ class ProfileController extends RController
 			$model->DateOfBirth = date("Y-m-d",strtotime($model->DateOfBirth));
 			$partnerSchool->attributes=$_POST['Partnerschool'];
 			$valid = $model->validate() && $partnerSchool->validate();
+			$application->attributes= $_POST['Application'];
 			if($type === "Student")
 			{
-				$application->attributes= $_POST['Application'];
 				$allocation->attributes= $_POST['Allocation'];
 				$academicYear->attributes= $_POST['Academicyear'];
 				$academicTerm->attributes=$_POST['Academicterm'];
 				$application->SponsoredYears = 1;
 				$valid = $allocation->validate() && $application->validate() && $academicTerm->validate() && $academicYear->validate()  && $valid;
 			}
-			
 			$model->Honor = $_POST['Profile']['Honor'];
 			$model->YearStarted =$_POST['Profile']['YearStarted'];
 			$model->YearEnded=$_POST['Profile']['YearEnded'];
 			$application->Course=$_POST['Application']['Course'];
+			
 			if($valid)
 			{
 				if($model->save())
@@ -135,10 +135,9 @@ class ProfileController extends RController
 						$partnerSchool->User_Id = $user->Id;
 						if($partnerSchool->save())
 						{
-							if($type === 'Student')
-							{
-								$application->User_Id = $user->Id;
-								if($application->save(false))
+							$application->User_Id = $user->Id;
+							if($application->save(false)){
+								if($type === 'Student')
 								{
 									$allocation->Application_Id = $application->Id;
 									$yearId= $academicYear->getAcademicYearId($academicYear->StartYear,$academicYear->EndYear);
