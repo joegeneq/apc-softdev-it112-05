@@ -69,20 +69,18 @@ $type = Role::model()->findByPk($user->Role_Id)->Name;
 				<div style="display: inline-flex;">
 				<div class="row" <?php echo (SysTable::IsVisible('DateOfBirth',$user->Role_Id) ?  "" : "style='display:none;'"); ?>>
 					<?php echo $form->labelEx($model,'DateOfBirth'); ?>
-					<?php $this->widget('zii.widgets.jui.CJuiDatePicker',array(
-						'name'=>'DateOfBirth',
-    					// additional javascript options for the date picker plugin
-						'options'=>array(
-							'showAnim'=>'fold',
-							 'changeMonth'=>true,
-					        'changeYear'=>true,
-					        'yearRange'=>'1980:2099',
-					         'showOtherMonths'=>true,
-					         'selectOtherMonths'=>true,
-							),
-						'htmlOptions'=>array(
-							'style'=>'height:20px;'
-							),
+					<?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+			    'attribute'=>'DateOfBirth',
+			    'model'=>$model,
+			    'language'=>'en-GB',
+			    'options'=>array(
+			    	'changeMonth'=>'true', 
+                    'changeYear'=>'true', 
+                    'dateFormat'=>'yy-dd-mm',
+                    'yearRange'=>'-70:+5',
+			        'showAnim'=>'fold',
+			        'showOn'=>'focus',
+			    )
 						));
 						?>
 						<?php echo $form->error($model,'DateOfBirth'); ?>

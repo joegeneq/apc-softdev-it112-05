@@ -69,7 +69,7 @@ $this->menu=array(
     'data'       => $model,
     //you can define any default params for child EditableFields 
     'url'        => $this->createUrl('profile/update'), //common submit url for all fields
-    'params'     => array('YII_CSRF_TOKEN' => Yii::app()->request->csrfToken), //params for all fields
+    //'params'     => array('YII_CSRF_TOKEN' => Yii::app()->request->csrfToken), //params for all fields
     'emptytext'  => 'no value',
     //'apply' => false, //you can turn off applying editable to all attributes
       
@@ -159,87 +159,52 @@ $this->menu=array(
             ),
         ), 
 		
-		
-        array(
-            'name'=>'Occupation',
-            'visible'=>($type === "Alumni"),
-           ),
+		/*array(
+            'name' => 'Occupation',
+            'editable' => array(
+                'type'       => 'text',
+                'placement' => 'right',           
+            ),
+			'visible'=>($type !== "Student"),
+        ),*/
         array(
             'name'=>'FuturePlan',
 			'label'=>($type === 'Student') ? 'FuturePlan' : 'Remarks'
             ),	
-		array(
-            'name'=>'School',
-			'value'=>School::getSchool($model->Id)
-            ),	
-		array(
-            'name'=>'Course',
-			'value'=>Application::getCourse($model->Id)
-            ),		
     )
     ));
 ?>
 
-<?php if($type === "Student") : ?>
+<?php //if($type === "Student") : ?>
 <h1>Application Details</h1>
 <?php 
-// $this->widget('editable.EditableDetailView', array(
-// 	'data'=>$partnerSchool,
-//     'apply' => false,
-//     'htmlOptions'=>array('style'=>'padding-bottom:200px;'),
-// 	'attributes'=>array(
-// 		array(
-// 		'name'=>'School',
-// 		'header'=>'School',
-// 		'value'=>$partnerSchool->school->Name,
-// 		),
-// 	),
-// )); 
-$this->widget('editable.EditableDetailView', array(
-    'data'=>$application,
-   
-    'attributes'=>array(
-	array(
-        'name' =>'Schoolname',
-		 'editable' => array(
+ $this->widget('editable.EditableDetailView', array(
+ 	'data'=>$partnerSchool,
+     'htmlOptions'=>array('style'=>'padding-bottom:200px;'),
+ 	'attributes'=>array(
+ 		array(
+ 		'name'=>'School_Id',
+ 		'header'=>'School',
+ 		'value'=>$partnerSchool->school->Name,
+		'editable' => array(
                 'type'       => 'select',
-                'source'    => Editable::source(School::model()->getSchools()),
+                'source'    => Editable::source(School::model()->GetSchools()),
                 'placement' => 'right',           
             )
-        ),
-        'TypeOfApplication',
-        'Course',
-        'Duration',
+ 		),
+ 	),
+ )); 
+$this->widget('editable.EditableDetailView', array(
+    'data'=>$application,   
+	'htmlOptions'=>array('style'=>'padding-bottom:20px;'),
+    'attributes'=>array(
+        array( 'name'=>'Course',
+			'editable'=>array(
+				'type'=>'text',
+				'placement'=>'right'
+		)),        
     ),
 ));
 ?>
-<h1>Grades</h1>
-<?php $this->widget('bootstrap.widgets.TbGridView', array(
-    'id' =>'grades-grid',
-    'itemsCssClass' =>'table-bordered items',
-    'htmlOptions' => array('style' => 'width:350px;'),
-    'dataProvider' =>$grades->searchByApplicationId($application->Id),
-    'columns'=>array(
-        array(
-            'class' =>'editable.EditableColumn',
-            'name' =>'GPA',
-            'editable' => 
-                array(
-                'type' => 'text',
-                 'url' => $this->createUrl('grades/update'), 
-                'placement' => 'right',
-                )               
-        ),
-        array(
-            'header'=>'Timeline',
-            'name'=>'timeline_id',
-            'value'=>'$data->timeline->TermName',
-        ),
-    ),
-)); ?>
 
-<?php if(is_null($allocation->id)) : ?>
-
-<?php endif; ?>
-<?php endif; ?>
 
