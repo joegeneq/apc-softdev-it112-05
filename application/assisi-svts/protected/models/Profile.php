@@ -124,11 +124,11 @@ class Profile extends CActiveRecord
 			'CivilStatus' => 'Civil Status',
 			'DateOfBirth' => 'Date Of Birth',
 			'PlaceOfBirth' => 'Place Of Birth',
-			/*'Occupation' => 'Occupation',*/
+			//'Occupation' => 'Occupation',
 			'Address' => 'Address',
 			'ContactNumber' => 'Contact Number',
 			'Email' => 'Email',
-			'FuturePlan' => 'Message for us',
+			'FuturePlan' => 'Future Plan',
 			'DateCreated' => 'Date Created',
 			'DateUpdate' => 'Date Update',
 			'YearStarted'=>'Year Started',
