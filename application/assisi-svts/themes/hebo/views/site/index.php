@@ -18,7 +18,7 @@
     <div class="shout-box">
       <div class="shout-text">
         <h1><b>Assisi Development Foundation, Inc.</b></h1>
-        <p>Welcome to the Scholarship Virtual Tracking System of Gado & Jess Jalandoni Scholarship Program!</p>
+        <p>Welcome to the Scholarship Virtual Tracking System of Gado & Jesse Jalandoni Scholarship Program!</p>
       </div>
     </div>
     <!-- <div class="page-header">
@@ -38,7 +38,7 @@
       </ul>
     </div>
     <div class="span6">
-      <h3 class="header">Qualities of a JESSIE JALANDONI SCHOLAR
+      <h3 class="header">Qualities of a JESSE JALANDONI SCHOLAR
         <span class="header-line"></span> 
       </h3>
       <ul>
@@ -46,7 +46,6 @@
         <li> <b><i>E</i></b> - Education is a lifetime experience. Ensures he/she renders at least 2 hours work for others or 10 hours per week. </li><br/>
         <li> <b><i>S</i></b> - Self-sacrifice and doing what is essential in life - capacity to share with others. </li><br/>
         <li> <b><i>S</i></b> - Sunday (and Sunday Mass) - making the Lord's Day holy. </li><br/>
-        <li> <b><i>I</i></b> - Integrity (Honesty and Respect for oneself and for others) </li><br/>
         <li> <b><i>E</i></b> - Excellence in all that I do (work, pray, study, and attitudes) </li>
       </ul>
     </div>

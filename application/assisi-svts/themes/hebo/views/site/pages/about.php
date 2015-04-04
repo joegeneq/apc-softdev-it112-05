@@ -271,7 +271,7 @@
                     Metro Manila, Philippines<br />
                     Telephone (632) 632-1001 to 03
                     Telefax (632) 632-7844<br />
-                    Email: assisi.foundation@gmail.com</h4>
+                    Email: gado.jalandoni@gmail.com</h4>
             </blockquote>
         </div>
         
