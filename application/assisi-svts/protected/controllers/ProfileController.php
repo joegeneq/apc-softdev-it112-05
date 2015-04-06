@@ -111,11 +111,11 @@ class ProfileController extends RController
 			$application->attributes= $_POST['Application'];
 			if($type === "Student")
 			{
-				$allocation->attributes= $_POST['Allocation'];
-				$academicYear->attributes= $_POST['Academicyear'];
-				$academicTerm->attributes=$_POST['Academicterm'];
+				//$allocation->attributes= $_POST['Allocation'];
+				//$academicYear->attributes= $_POST['Academicyear'];
+				//$academicTerm->attributes=$_POST['Academicterm'];
 				$application->SponsoredYears = 1;
-				$valid = $allocation->validate() && $application->validate() && $academicTerm->validate() && $academicYear->validate()  && $valid;
+				$valid = $application->validate();// && $allocation->validate() &&  $academicTerm->validate() && $academicYear->validate()  && $valid;
 			}
 			$model->Honor = $_POST['Profile']['Honor'];
 			$model->YearStarted =$_POST['Profile']['YearStarted'];
@@ -139,11 +139,11 @@ class ProfileController extends RController
 							if($application->save(false)){
 								if($type === 'Student')
 								{
-									$allocation->Application_Id = $application->Id;
+									/*$allocation->Application_Id = $application->Id;
 									$yearId= $academicYear->getAcademicYearId($academicYear->StartYear,$academicYear->EndYear);
 									$timelineId=Timeline::getTimelineId($yearId,$_POST['Academicterm']['Id']);
 									$allocation->Timeline_Id=$timelineId;
-									$allocation->save();
+									$allocation->save();*/
 								}
 							}
 						}
