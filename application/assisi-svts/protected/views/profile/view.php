@@ -45,6 +45,7 @@ $this->menu=array(
         echo $this->renderPartial('/allocation/_form', array('model'=>$all,'academicTerm'=>$academicTerm,
             'academicYear'=>$academicYear)); 
     }
+	
     ?>
 </div>
  

@@ -76,13 +76,13 @@ $type = Role::model()->findByPk($user->Role_Id)->Name;
 			    'options'=>array(
 			    	'changeMonth'=>'true', 
                     'changeYear'=>'true', 
-                    'dateFormat'=>'yy-dd-mm',
-                    'yearRange'=>'-70:+5',
+                    'yearRange'=>'-70:+0',
+                    'dateFormat'=>'yy-mm-dd',
 			        'showAnim'=>'fold',
 			        'showOn'=>'focus',
 			    )
-						));
-						?>
+			));// echo $form->textField($model,'DateOfBirth',array('class'=>'datepicker'));?>
+						
 						<?php echo $form->error($model,'DateOfBirth'); ?>
 					</div>
 
@@ -130,9 +130,6 @@ $type = Role::model()->findByPk($user->Role_Id)->Name;
 						<?php echo $form->textField($application,'Course',array('size'=>60,'maxlength'=>100)); ?>
 						<?php echo $form->error($application,'Course'); ?>
 					</div>
-					
-				</div>
-				
 				<div style="display: inline-flex;">
 					<div class="row" <?php echo (SysTable::IsVisible('Honor',$user->Role_Id) ?  "" : "style='display:none;'"); ?>>
 						<?php echo $form->labelEx($model,'Honor'); ?>
@@ -153,6 +150,9 @@ $type = Role::model()->findByPk($user->Role_Id)->Name;
 						<?php echo $form->error($model,'YearEnded'); ?>
 					</div>
 				</div>
+			</div>
+				
+				
 
 				
 				<!-- Application tab -->
@@ -239,7 +239,7 @@ $type = Role::model()->findByPk($user->Role_Id)->Name;
 		</div><!-- form -->
 		<script type="text/javascript">
 			$(document).ready(function(){
-				$('.datepicker').datepicker();
+				//$('.datepicker').datepicker();
 				var tabs = $('#tabs li');
 				var role = $('.role').val();
 				if(role == "Student"){
