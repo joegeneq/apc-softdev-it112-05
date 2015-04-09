@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2015 at 04:35 PM
+-- Generation Time: Apr 09, 2015 at 08:58 AM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -83,44 +83,7 @@ CREATE TABLE IF NOT EXISTS `allocation` (
   KEY `fk_Allocation_Timeline1_idx` (`Timeline_Id`),
   KEY `fk_Allocation_Application1_idx` (`Application_Id`),
   KEY `fk_Allocation_Sponsor1_idx` (`Sponsor_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
-
---
--- Dumping data for table `allocation`
---
-
-INSERT INTO `allocation` (`id`, `TuitionFee`, `Miscellaneous`, `Others`, `Timeline_Id`, `Application_Id`, `Sponsor_Id`) VALUES
-(1, '49000.00', '0.00', '0.00', 1, 1, 1),
-(2, '49.00', '0.00', '0.00', 1, 3, 1),
-(3, '49.00', '0.00', '0.00', 1, 2, 1),
-(4, '49.00', '0.00', '0.00', 1, 4, 1),
-(5, '49.00', '0.00', '0.00', 1, 5, 1),
-(6, '49000.00', '0.00', '0.00', 1, 6, 1),
-(7, '49000.00', '0.00', '0.00', 1, 7, 1),
-(8, '49000.00', '0.00', '0.00', 1, 8, 1),
-(9, '49000.00', '0.00', '0.00', 1, 9, 1),
-(10, '49000.00', '0.00', '0.00', 1, 10, 1),
-(11, '49000.00', '0.00', '0.00', 1, 11, 1),
-(12, '49000.00', '0.00', '0.00', 1, 12, 1),
-(13, '49.00', '0.00', '0.00', 1, 13, 1),
-(14, '49.00', '0.00', '0.00', 1, 14, 1),
-(15, '49.00', '0.00', '0.00', 1, 15, 1),
-(16, '45.00', '18.00', '0.00', 1, 16, 1),
-(17, '45.00', '16.00', '0.00', 1, 17, 1),
-(18, '45.00', '0.00', '0.00', 1, 18, 1),
-(19, '20.00', '0.00', '0.00', 1, 19, 1),
-(20, '45000.00', '0.00', '0.00', 1, 20, 1),
-(21, '45.00', '0.00', '0.00', 1, 21, 1),
-(22, '49000.00', '0.00', '0.00', 1, 22, 1),
-(23, '45000.00', '0.00', '0.00', 1, 23, 1),
-(24, '45000.00', '0.00', '0.00', 1, 24, 1),
-(25, '45000.00', '0.00', '0.00', 1, 25, 1),
-(26, '45000.00', '0.00', '0.00', 1, 26, 1),
-(27, '45000.00', '0.00', '0.00', 1, 27, 1),
-(30, '0.00', '0.00', '0.00', 10, 28, 1),
-(31, '110000.00', '50000.00', '3000.00', 17, 29, 2),
-(32, '0.00', '0.00', '0.00', 18, 30, 1),
-(33, '0.00', '0.00', '0.00', 19, 31, 1);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -140,8 +103,8 @@ CREATE TABLE IF NOT EXISTS `announcement` (
 --
 
 INSERT INTO `announcement` (`id`, `Subject`, `message_box`) VALUES
-(1, 'Meeting!', 'Hi scholars!'),
-(2, 'Reuninon', 'Hi friends!');
+(1, 'Sample January 20', 'Hi '),
+(2, 'Hi Scholar', 'Reuninon this Friday!');
 
 -- --------------------------------------------------------
 
@@ -158,46 +121,16 @@ CREATE TABLE IF NOT EXISTS `application` (
   `User_Id` int(11) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `fk_Application_User1_idx` (`User_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=58 ;
 
 --
 -- Dumping data for table `application`
 --
 
 INSERT INTO `application` (`Id`, `TypeOfApplication`, `Course`, `Duration`, `SponsoredYears`, `User_Id`) VALUES
-(1, 'College', 'IT', '4', 1, 2),
-(2, 'College', 'BSBA Marketing Management', '', 1, 3),
-(3, 'College', 'BS Tourism Management', '', 1, 4),
-(4, 'College', 'Bs Accounting Technology', '', 1, 5),
-(5, 'College', 'Bs Accounting Technology', '', 1, 6),
-(6, 'College', 'BSED English', '', 1, 7),
-(7, 'College', 'Bs Accounting Technology', '', 1, 8),
-(8, 'College', 'BSED English', '', 1, 9),
-(9, 'College', 'BEd', '', 1, 10),
-(10, 'College', 'BE Elementary education', '', 1, 11),
-(11, 'College', 'BE Elementary education', '', 1, 12),
-(12, 'College', 'BS Elementary Education', '', 1, 13),
-(13, 'College', 'BS Psychology', '', 1, 14),
-(14, 'College', 'B Secondary Education', '', 1, 15),
-(15, 'College', 'BS Education', '', 1, 16),
-(16, 'College', 'BS Medical Technology', '', 1, 17),
-(17, 'College', 'Bs Accounting Technology', '', 1, 18),
-(18, 'College', 'BS Commerce', '', 1, 19),
-(19, 'College', 'BSED', '', 1, 20),
-(20, 'College', 'BS Psychology', '', 1, 21),
-(21, 'College', 'BS Education', '', 1, 22),
-(22, 'College', 'BS Psychology', '', 1, 23),
-(23, 'College', 'Marketing Management', '', 1, 24),
-(24, 'College', 'Management Accounting', '', 1, 25),
-(25, 'College', 'BS Accountancy', '', 1, 26),
-(26, 'College', 'BS Accountancy', '', 1, 27),
-(27, 'College', 'BSBA Marketing Management', '', 1, 28),
-(28, 'College', 'Law', '4', 1, 30),
-(29, 'College', 'AB Literature', '4', 1, 32),
-(30, 'College', 'IT', '3', 1, 35),
-(31, 'College', 'IT', '', 1, 36),
-(32, '', 'dsadsa', '', 0, 47),
-(33, '', 'dsadsa', '', 0, 48);
+(55, 'College', 'BSBA', '4', 1, 77),
+(56, 'College', 'IT', '2', 1, 78),
+(57, '', 'BSIT', '', 0, 79);
 
 -- --------------------------------------------------------
 
@@ -230,6 +163,34 @@ INSERT INTO `authassignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
 ('Alumni', '45', NULL, NULL),
 ('Alumni', '46', NULL, NULL),
 ('Alumni', '48', NULL, NULL),
+('Alumni', '49', NULL, NULL),
+('Alumni', '50', NULL, NULL),
+('Alumni', '51', NULL, NULL),
+('Alumni', '52', NULL, NULL),
+('Alumni', '53', NULL, NULL),
+('Alumni', '54', NULL, NULL),
+('Alumni', '55', NULL, NULL),
+('Alumni', '56', NULL, NULL),
+('Alumni', '57', NULL, NULL),
+('Alumni', '58', NULL, NULL),
+('Alumni', '59', NULL, NULL),
+('Alumni', '60', NULL, NULL),
+('Alumni', '61', NULL, NULL),
+('Alumni', '62', NULL, NULL),
+('Alumni', '63', NULL, NULL),
+('Alumni', '64', NULL, NULL),
+('Alumni', '65', NULL, NULL),
+('Alumni', '66', NULL, NULL),
+('Alumni', '67', NULL, NULL),
+('Alumni', '68', NULL, NULL),
+('Alumni', '69', NULL, NULL),
+('Alumni', '70', NULL, NULL),
+('Alumni', '71', NULL, NULL),
+('Alumni', '72', NULL, NULL),
+('Alumni', '73', NULL, NULL),
+('Alumni', '74', NULL, NULL),
+('Alumni', '76', NULL, NULL),
+('Alumni', '79', NULL, NULL),
 ('Coordinator', '29', NULL, NULL),
 ('Coordinator', '31', NULL, NULL),
 ('Coordinator', '33', NULL, NULL),
@@ -259,6 +220,9 @@ INSERT INTO `authassignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
 ('Student', '5', NULL, NULL),
 ('Student', '6', NULL, NULL),
 ('Student', '7', NULL, NULL),
+('Student', '75', NULL, NULL),
+('Student', '77', NULL, NULL),
+('Student', '78', NULL, NULL),
 ('Student', '8', NULL, NULL),
 ('Student', '9', NULL, NULL);
 
@@ -415,15 +379,7 @@ CREATE TABLE IF NOT EXISTS `grades` (
   PRIMARY KEY (`Id`),
   KEY `fk_Grades_Timeline_idx` (`Timeline_Id`),
   KEY `fk_Grades_Application1_idx` (`Application_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `grades`
---
-
-INSERT INTO `grades` (`Id`, `GPA`, `Timeline_Id`, `Application_Id`) VALUES
-(1, '1.50', 1, 27),
-(2, '2.30', 17, 28);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -464,60 +420,15 @@ CREATE TABLE IF NOT EXISTS `partnerschool` (
   PRIMARY KEY (`Id`),
   KEY `fk_School_has_User_User1_idx` (`User_Id`),
   KEY `fk_School_has_User_School1_idx` (`School_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=48 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=54 ;
 
 --
 -- Dumping data for table `partnerschool`
 --
 
 INSERT INTO `partnerschool` (`Id`, `School_Id`, `User_Id`) VALUES
-(1, 23, 2),
-(2, 1, 3),
-(3, 1, 4),
-(4, 1, 5),
-(5, 1, 6),
-(6, 1, 7),
-(7, 1, 8),
-(8, 1, 9),
-(9, 1, 10),
-(10, 1, 11),
-(11, 1, 12),
-(12, 1, 13),
-(13, 5, 14),
-(14, 5, 15),
-(15, 5, 16),
-(16, 4, 17),
-(17, 4, 18),
-(18, 4, 19),
-(19, 4, 20),
-(20, 4, 21),
-(21, 4, 22),
-(22, 4, 23),
-(23, 3, 24),
-(24, 3, 25),
-(25, 3, 26),
-(26, 3, 27),
-(27, 3, 28),
-(28, 3, 29),
-(29, 23, 30),
-(30, 18, 31),
-(31, 23, 32),
-(32, 23, 33),
-(33, 3, 34),
-(34, 8, 35),
-(35, 4, 36),
-(36, 11, 37),
-(37, 8, 38),
-(38, 9, 39),
-(39, 12, 40),
-(40, 13, 41),
-(41, 14, 42),
-(42, 14, 43),
-(43, 13, 44),
-(44, 17, 45),
-(45, 15, 46),
-(46, 15, 47),
-(47, 15, 48);
+(52, 6, 78),
+(53, 13, 79);
 
 -- --------------------------------------------------------
 
@@ -548,14 +459,14 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `Honor` varchar(45) NOT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Email_UNIQUE` (`Email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=83 ;
 
 --
 -- Dumping data for table `profile`
 --
 
 INSERT INTO `profile` (`Id`, `Lastname`, `Firstname`, `Middlename`, `Religion`, `Sex`, `DateOfBirth`, `PlaceOfBirth`, `Address`, `ContactNumber`, `Email`, `DateCreated`, `DateUpdate`, `CivilStatus`, `Occupation`, `CompanyName`, `FuturePlan`, `YearStarted`, `YearEnded`, `Honor`) VALUES
-(1, 'Delos Reyes', 'John Edward', '', 'Christian', 1, '1993-11-05', '', 'Manila', '09221234567', 'jddelosreyes@apc.edu.ph', '2014-02-13', '2014-02-14 12:42:43', '', 'Administrator', NULL, 'None so far', 0000, 0000, ''),
+(1, 'Almazan', 'Jeff Bryan', '', 'Christian', 1, '1993-11-05', '', 'Manila', '09221234567', 'almazan.jeffbryan@gmail.com', '2014-02-13', '2014-02-14 12:42:43', '', 'Administrator', NULL, 'None so far', 0000, 0000, ''),
 (2, 'Salas', 'Marz Kimberly', 'Tamba', 'Roman Catholic', 0, '1995-07-07', 'Bacolod City', '1 Roxas Ave. Prk. Mahida-iton Brgy. 39 Bacolod City', '09465070044', 'kimsalas@gmail.com', '1970-01-01', '2014-04-28 17:54:10', 'Single', NULL, NULL, '', 0000, 0000, ''),
 (3, 'Serfino', 'Sherlyn', 'Tayco', 'Roman Catholic', 0, '1970-01-01', 'Balabac, Palawan', '#46-Bonifacio street kabankalan City Negros, Occidental', '09286213436', '*@yahoo.com', '1970-01-01', '2014-05-01 06:19:11', 'Single', NULL, NULL, '', 0000, 0000, ''),
 (4, 'Hinolan', 'Catherine Keth ', 'Redil', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Lot 30 Block 9 Gardenville Subd. Tangulo Bacolod City', '4442686', '_______@yahoo.com', '1970-01-01', '2014-05-01 06:30:29', 'Single', NULL, NULL, '', 0000, 0000, ''),
@@ -581,28 +492,20 @@ INSERT INTO `profile` (`Id`, `Lastname`, `Firstname`, `Middlename`, `Religion`, 
 (25, 'Sasi ', 'Maria Juela', 'Jusga', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Purok linya Brgy Cabug Bacolod City', '00000', 'juela@yahoo.com', '1970-01-01', '2014-05-01 07:54:17', 'Single', NULL, NULL, '', 0000, 0000, ''),
 (26, 'tedoco', 'Jacqueline', 'Chua', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'San Roque Tangub Bacolod City Negros Occidental', '00000', '_*@yahoo.com', '1970-01-01', '2014-05-01 07:57:30', 'Single', NULL, NULL, '', 0000, 0000, ''),
 (27, 'Delatina', 'Maria Joyce', 'Escobar', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Menlo Village talisay City Negros Occidental', '09094389161', '*******@yahoo.com', '1970-01-01', '2014-05-01 08:00:07', 'Single', NULL, NULL, '', 0000, 0000, ''),
-(28, 'Bebing', 'Maiyenn', 'Magno', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', '51 St. Galo Mabini Bacolod City', '09478911824', '******@yahoo.com', '1970-01-01', '2014-05-01 08:02:07', 'Single', NULL, NULL, '', 0000, 0000, ''),
-(29, 'Lumayno', 'Tricia Ann ', 'Olimpo', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', '7B Delara St. Murcia Negros Occidental', '09235806668', '*****@yahoo.com', '1970-01-01', '2014-05-01 08:05:59', 'Single', NULL, NULL, '', 0000, 0000, ''),
 (30, 'Lubrio', 'Jessan', 'Arreza', '', 1, '1970-01-01', '', 'Cavite', '09191234567', 'calubrio@apc.edu.ph', '2014-05-02', '2014-05-02 04:37:52', 'Single', NULL, NULL, '', 0000, 0000, ''),
-(31, 'Brando', 'Dio', 'Joestar', 'Atheist', 1, '1970-01-01', 'London, England', 'Joestar Manor, London, England', '09175110623', 'wrrymail@gmail.com', '2014-05-02', '2014-05-02 06:45:35', 'Single', NULL, NULL, 'DASDAS', 2010, 2014, 'Cumlaude'),
 (32, 'Joestar', 'George', 'Steak', '', 1, '1970-01-01', '', 'Joestar Manor, London, England', '09158976245', 'howdoyoulikeyoursteak@moo.com', '2014-05-02', '2014-05-02 06:49:09', 'Married', NULL, NULL, '', 0000, 0000, ''),
 (33, 'Mesina', 'Leon Jordan', 'J.', 'Catholic', 1, '1970-01-01', 'Quezon City', 'Blk 16 lt. 11 QC Ville 1 Central Ave,Diliman Quezon city', '09175110623', 'ljmesina@apc.edu.ph', '2014-05-19', '2014-05-19 03:36:09', 'Single', NULL, NULL, '', 0000, 0000, ''),
 (34, 'Galan', 'Sarah', 'M.', '', 0, '1981-11-12', '', 'Assisi Development Foundation Incorporated', '09232996239', 'sar_moresca@yahoo.com', '2014-05-19', '2014-05-19 03:42:01', 'Married', NULL, NULL, '', 0000, 0000, ''),
 (35, 'Almazan', 'Jeff Bryan', 'Talatagod', '', 1, '1970-01-01', '', 'Alabang', '5051735', 'jtalmazan113@gmail.com', '2015-02-28', '2015-02-28 06:53:42', 'Single', NULL, NULL, '', 0000, 0000, ''),
 (36, 'Almazan', 'Jeff', 'Talatagod', 'Roman Catholic', 1, '1970-01-01', 'Manila', 'Alabang', '0906754495', 'jeffbryan18@gmail.com', '2015-03-04', '2015-03-04 11:37:19', 'Single', NULL, NULL, '', 0000, 0000, ''),
-(37, 'Abrenica', 'Jeff Bryanttt', 'Talatagod', '', 1, '1970-01-01', '', 'Bicutan', '09067554495', 'jeffbryan_almazan@yahoo.com', '2015-03-17', '2015-03-17 15:13:37', 'Single', NULL, NULL, '', 0000, 0000, ''),
-(38, 'Espartero', 'Rodolfe', 'Jomari', 'Catholic', 1, '1970-01-01', 'Manila', '', '09067554498', 'ladaga.digna@mdc.com.ph', '2015-03-21', '2015-03-21 12:49:09', 'Single', NULL, NULL, 'dsd', 2010, 2011, ''),
-(39, 'dasd', 'dsad', 'dsa', 'dsa', 0, '1970-01-01', 'dsa', '', '1231', 'dsa@dslak.com', '2015-03-21', '2015-03-21 12:53:33', 'Single', NULL, NULL, '', 2010, 2011, ''),
-(40, 'dasda', 'dsa', 'dsa', 'dsadasda', 1, '1970-01-01', 'asda', '', '132', 'asdsa@adsa.com', '2015-03-21', '2015-03-21 12:56:34', 'Married', NULL, NULL, '', 0000, 0000, 'addasdasd'),
-(41, 'xas', 'dasdas', 'asdas', 'dsa', 0, '1970-01-01', 'dsa', '', '321', 'dsa@dsladsak.com', '2015-03-21', '2015-03-21 13:00:23', 'Single', NULL, NULL, '', 0000, 0000, 'adasdasfasfas'),
-(42, 'dsada', 'dsa', 'dsa', 'sdasda', 1, '1970-01-01', 'adsa', '', '213', 'adamlloydsa22@yahoo.com', '2015-03-21', '2015-03-21 13:02:19', 'Married', NULL, NULL, '', 2010, 2010, 'dsadada'),
-(43, 'dsada', 'dsa', 'dsa', 'dsa', 0, '1970-01-01', 'dsa', '', '23', 'dsada@asda.com', '2015-03-21', '2015-03-21 13:22:27', 'Married', NULL, NULL, '', 0000, 2132, 'dsa'),
-(44, 'sada', 'dsa', 'das', 'dsa', 0, '1970-01-01', 'dsa', '', 'dsa', 'jeffbryan_dsaalmazan@yahoo.com', '2015-03-21', '2015-03-21 13:24:11', 'Married', NULL, NULL, '', 2132, 0000, 'dsa'),
-(45, 'dsa', 'dsa', 'dsa', 'ada', 0, '1970-01-01', 'dsa', '', '213', 'Dawn_lucdsaas24@yahoo.com', '2015-03-21', '2015-03-21 13:28:20', 'Single', NULL, NULL, '', 0000, 0000, 'dsa'),
-(46, 'dasda', 'dsa', 'dsa', 'dsa', 1, '1970-01-01', 'dsa', '', 'dsa', 'dsa@dsadsladsak.com', '2015-03-21', '2015-03-21 13:28:48', 'Married', NULL, NULL, '', 0000, 0000, 'dsa'),
-(47, 'dsada', 'dsa', 'dsa', 'dsada', 0, '1970-01-01', 'dsada', '', '1231', 'dsdasda@dsadsladsak.com', '2015-03-21', '2015-03-21 13:29:33', 'Single', NULL, NULL, '', 0000, 0000, 'das'),
-(48, 'dsadadsad', 'sdsa', 'dsa', 'dsa', 0, '1970-01-01', 'dsa', '', 'das', 'Daniel-cdasdasuevas@yahoo.com', '2015-03-21', '2015-03-21 13:32:08', 'Single', NULL, NULL, '', 0000, 0000, 'dsad'),
-(49, 'dsadadsad', 'sdsa', 'dsa', 'dsa', 0, '1970-01-01', 'dsa', '', 'das', 'Daniel-cdsdasdaasdasuevas@yahoo.com', '2015-03-21', '2015-03-21 13:33:14', 'Single', NULL, NULL, '', 0000, 0000, 'dsad');
+(37, 'Abrenica', 'Jeff Bryanttt', 'Talatagod', '', 1, '1970-01-14', '', 'Bicutan', '09067554495', 'jeffbryan_almazan@yahoo.com', '2015-03-17', '2015-03-17 15:13:37', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(75, 'Espartero', 'Rodolfe', 'Almazan', 'Catholic', 1, '1970-01-01', 'Manila', '', '09067554495', 'jtalmazabn113@gmail.com', '2015-03-24', '2015-03-24 08:23:26', 'Single', NULL, NULL, 'hkdsjfhkdsjf', 2013, 2014, 'Cumlaude'),
+(76, 'Almazan', 'Noel', '', 'Catholic', 1, '1970-01-01', '', '', '09067554498', 'na@f.v', '2015-04-03', '2015-04-03 11:53:13', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(78, 'adhsak', 'jklajdaklj', 'lkj', 'Muslim', 0, '1993-11-05', 'Manila', '', '5', 'adas213@yahoo.com', '2015-04-06', '2015-04-06 15:24:37', 'Single', NULL, NULL, '', 2013, 0000, ''),
+(79, 'Almazan', 'Jeff Bryan', 'Talatagod', 'Catholic', 1, '1993-11-05', 'Manila', '', '09067554495', 'jeff@yahoo.com', '2015-04-06', '2015-04-06 15:55:11', 'Single', NULL, NULL, '', 2011, 2015, 'Cumlaude'),
+(80, 'Espartero', 'Rodolfe', 'None', 'Muslim', 0, '1993-12-24', 'Manila', '', '09223264582', 'rodolfe@yahoo.com', '2015-04-06', '2015-04-06 15:56:14', 'Single', NULL, NULL, '', 2011, 2013, ''),
+(81, 'Tolorio', 'Shane', '', '', 1, '1993-12-24', 'Manila', '', '09067554495', 'jseff@yahoo.com', '2015-04-07', '2015-04-07 09:56:42', 'Single', NULL, NULL, '', 0000, 0000, ''),
+(82, 'Bautista', 'Herbert', '', '', 1, '1993-12-24', 'Manila', '', '09223264582', 'jsseff@yahoo.com', '2015-04-07', '2015-04-07 09:57:26', 'Single', NULL, NULL, '', 2013, 2014, 'Cumlaude');
 
 -- --------------------------------------------------------
 
@@ -627,7 +530,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(45) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `role`
@@ -718,7 +621,7 @@ CREATE TABLE IF NOT EXISTS `sys_table` (
   `Role_Id` int(11) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `fk_sys_Table_Role1_idx` (`Role_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `sys_table`
@@ -750,7 +653,8 @@ INSERT INTO `sys_table` (`Id`, `FieldName`, `Role_Id`) VALUES
 (35, 'Honor', 4),
 (36, 'YearStarted', 4),
 (37, 'YearEnded', 4),
-(38, 'CivilStatus', 4);
+(38, 'CivilStatus', 4),
+(39, 'Occupation', 4);
 
 -- --------------------------------------------------------
 
@@ -795,7 +699,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`Id`),
   KEY `fk_User_Profile1_idx` (`Profile_Id`),
   KEY `fk_User_Role1_idx` (`Role_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=80 ;
 
 --
 -- Dumping data for table `user`
@@ -828,28 +732,17 @@ INSERT INTO `user` (`Id`, `Username`, `Password`, `Profile_Id`, `Role_Id`) VALUE
 (24, 'msasi', '$2QOWjfCyqfvw', 25, 3),
 (25, 'jtedoco', '$2FeRLpvAfb6I', 26, 3),
 (26, 'mdelatina', '$2q2ZrVeDMQHk', 27, 3),
-(27, 'mbebing', '$2vJZwHKljNwE', 28, 4),
-(28, 'tlumayno', '$2CZ.y6jgw.XE', 29, 4),
 (29, 'jlubrio', '$2nUotZpPa8fM', 30, 2),
-(30, 'dbrando', '$2rSzrBA3PacY', 31, 4),
-(31, 'gjoestar', '$2t/8Nf0pc./Y', 32, 2),
 (32, 'lmesina', '$2pWKc5JRwB2k', 33, 3),
 (33, 'vmesina', '$2.VQz1WrYyQs', 34, 2),
 (34, 'jalmazan', '$2Yya3RYYteJ6', 35, 2),
 (35, 'ealmazan', '$2CHcwB21.4wc', 36, 3),
 (36, 'falmazan', '$2chnd3bR8saE', 37, 4),
-(37, 'respartero', '$2uBP1CLvTK0s', 38, 4),
-(38, 'ddasd', '$2n8mRHKoh5qo', 39, 4),
-(39, 'ddasda', '$2XencD6oIDf2', 40, 4),
-(40, 'dxas', '$2DwMiKmMZbw6', 41, 4),
-(41, 'ddsada', '$2rZbzzGt4QAA', 42, 4),
-(42, 'sdsada', '$2BnivFkU3WX2', 43, 4),
-(43, 'dsada', '$2F08X3yWRBDI', 44, 4),
-(44, 'ddsa', '$2QVIh7YLhnJw', 45, 4),
-(45, 'sdasda', '$2R3fuQz/yQDA', 46, 4),
-(46, 'adsada', '$2IZEfjGXPp0E', 47, 4),
-(47, 'sdsadadsad', '$2dDwJQfNv5dA', 48, 4),
-(48, 'ddsadadsad', '$2AyCUAxP.oGg', 49, 4);
+(75, 'jadhsak', '$2fV362ffpMo.', 78, 3),
+(76, 'balmazan', '$2fL/FRfsfiCA', 79, 4),
+(77, 'respartero', '$21is/zn.OplA', 80, 3),
+(78, 'stolorio', '$2Hb3Wv4gtL.s', 81, 3),
+(79, 'hbautista', '$2Kia.df7BudA', 82, 4);
 
 --
 -- Constraints for dumped tables
