@@ -12,7 +12,7 @@ $this->menu=array(
   array('label'=>'Scholars','url'=>array('profile/admin','type'=>'Student'),'active'=>($type==='Student')),
   array('label'=>'Graduates','url'=>array('profile/admin','type'=>'Alumni'),'active'=>($type==='Alumni')),
   array('label'=>'Schools','url'=>array('school/admin')),
-  array('label'=>'Grades','url'=>array('grades/admin')),
+
  );
 
 	?>

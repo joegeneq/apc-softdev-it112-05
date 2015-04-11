@@ -3,7 +3,7 @@ $this->menu=array(
 	array('label'=>'Scholars','url'=>array('profile/admin','type'=>'Student'),'visible'=>Yii::app()->user->checkAccess('profile/admin')),
 	array('label'=>'Graduates','url'=>array('profile/admin','type'=>'Alumni'),'visible'=>Yii::app()->user->checkAccess('profile/admin')),
 	array('label'=>'Schools','url'=>array('school/admin'),'visible'=>Yii::app()->user->checkAccess('school/admin')),
-	array('label'=>'Grades','url'=>array('grades/admin'),'visible'=>Yii::app()->user->checkAccess('school/admin')),
+
 	);
 ?>
 
@@ -20,20 +20,12 @@ $this->menu=array(
           <p>In this module, the user can <i>Create a Scholar Record(s), View a Scholar Record(s), Add Allocation, and Update Informations of Students.</i> </p>
 
           <br/>
-          <b>Coordinators Module</b>
-          <p>In this module, the user can <i>Create a Coordinator and assign him/her to his/her specified college/university.</i> The coordinator will be the one who enters the grade of scholars in his/her assigned school.</p>
+          <b>Alumni Module</b>
+          <p>In this module, the user can <i>Create an Alumni and make their profile</i> The alumni can update their profile once they logged in.</p>
 
           <br/>
           <b>Schools Module</b>
           <p>In this module, the user can <i>Create a School</i> along with its addess and contact information. The user can also edit particular field(s).</p>
-
-          <br/>
-          <b>Grades Module</b>
-          <p>In this module, the user will <i>Add Grades for their corresponding students. The user will indicate the Grade Point Average (GPA), the semester, and the student.</i> </p>
-
-          <br/>
-          <b>Sponsors Module</b>
-          <p>In this module, the user can <i>Add New Sponsor(s)</i>. The user should also indicate the coordinator of the sponsor. </p>
           
           <br/>
       </div>

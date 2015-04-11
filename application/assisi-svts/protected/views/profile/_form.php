@@ -149,6 +149,11 @@ $type = Role::model()->findByPk($user->Role_Id)->Name;
 						<?php echo $form->textField($model,'YearEnded'); ?>
 						<?php echo $form->error($model,'YearEnded'); ?>
 					</div>
+						<div class="row" <?php echo (SysTable::IsVisible('Occupation',$user->Role_Id) ?  "" : "style='display:none;'"); ?>>
+						<?php echo $form->labelEx($model,'Occupation'); ?>
+						<?php echo $form->textField($model,'Occupation'); ?>
+						<?php echo $form->error($model,'Occupation'); ?>
+					</div>
 				</div>
 			</div>
 				
