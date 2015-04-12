@@ -1,4 +1,4 @@
-	<?php
+		<?php
 /* @var $this ProfileController */
 /* @var $model Profile */
 
@@ -229,7 +229,7 @@ $this->menu=array(
  $this->widget('editable.EditableDetailView', array(
  	'data'=>$partnerSchool,
      'htmlOptions'=>array('style'=>'padding-bottom:200px;'),
- 	'attributes'=>array(
+		'attributes'=>array(
  		array(
  		'name'=>'School_Id',
  		'header'=>'School',
@@ -242,8 +242,9 @@ $this->menu=array(
  		),
  	),
  )); 
+ 
 $this->widget('editable.EditableDetailView', array(
-    'data'=>$applicatio n,   
+    'data'=>$application,   
 	'htmlOptions'=>array('style'=>'padding-bottom:20px;'),
     'attributes'=>array(
         array( 'name'=>'Course',
