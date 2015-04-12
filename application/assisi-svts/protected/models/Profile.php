@@ -15,16 +15,15 @@
  * @property string $Address
  * @property string $ContactNumber
  * @property string $Email
- * @property string $FuturePlan
  * @property string $DateCreated
  * @property string $DateUpdate
  * @property string $CivilStatus
- * @property string $Occupation
  * @property string $CompanyName
  * @property string $FuturePlan
  * @property string $YearStarted
  * @property string $YearEnded
  * @property string $Honor
+ * @property string $Occupation
  *
  * The followings are the available model relations:
  * @property User[] $users
@@ -38,7 +37,6 @@ class Profile extends CActiveRecord
 	{
 		return 'profile';
 	}
-
 	public function getFullname()
 	{
 		return $this->Firstname.' '.$this->Lastname;
@@ -68,6 +66,8 @@ class Profile extends CActiveRecord
 	public $Miscellaneous;
 	public $Others;
 	public $total;
+	public $keyword;
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -76,25 +76,23 @@ class Profile extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Lastname, Firstname, Sex, ContactNumber, Email, CivilStatus', 'required'),
+			array('Lastname, Firstname, Sex, ContactNumber, Email', 'required'),
 			array('Sex', 'numerical', 'integerOnly'=>true),
-			array('Lastname, Firstname, CivilStatus', 'ext.alpha'),
-			array('Middlename', 'length', 'max'=>30),
-			array('Religion', 'length', 'max'=>30),
-			array('PlaceOfBirth', 'length', 'max'=>45),
-			//array('Occupation ', 'length', 'max'=>30),
+			array('Lastname, Firstname, Middlename, Religion', 'length', 'max'=>30),
+			array('PlaceOfBirth, CompanyName, Honor, Occupation', 'length', 'max'=>45),
 			array('Address', 'length', 'max'=>200),
 			array('ContactNumber', 'length', 'max'=>15),
-			array('Email', 'email'),
-			array('Email', 'unique','message'=>'Email already exists!'),  
-			array('DateOfBirth, FuturePlan, DateUpdate', 'safe'),
+			array('Email', 'length', 'max'=>100),
 			array('CivilStatus', 'length', 'max'=>20),
 			array('YearStarted, YearEnded', 'length', 'max'=>4),
 			array('DateOfBirth, DateUpdate, FuturePlan', 'safe'),
+			array('Lastname, Firstname, CivilStatus', 'ext.alpha'),
+			array('Email', 'email'),
+			array('Email', 'unique','message'=>'Email already exists!'), 
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('keyword', 'safe', 'on'=>'search'),
-			);
+		);
 	}
 
 	/**
@@ -106,7 +104,7 @@ class Profile extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'users' => array(self::HAS_MANY, 'User', 'Profile_Id'),
-			);
+		);
 	}
 
 	/**
@@ -121,20 +119,21 @@ class Profile extends CActiveRecord
 			'Middlename' => 'Middlename',
 			'Religion' => 'Religion',
 			'Sex' => 'Sex',
-			'CivilStatus' => 'Civil Status',
 			'DateOfBirth' => 'Date Of Birth',
 			'PlaceOfBirth' => 'Place Of Birth',
-			//'Occupation' => 'Occupation',
 			'Address' => 'Address',
 			'ContactNumber' => 'Contact Number',
 			'Email' => 'Email',
-			'FuturePlan' => 'Future Plan',
 			'DateCreated' => 'Date Created',
 			'DateUpdate' => 'Date Update',
-			'YearStarted'=>'Year Started',
-			'YearEnded'=>'Year Ended',
-			'Honor' => 'Honor Acquired'
-			);
+			'CivilStatus' => 'Civil Status',
+			'CompanyName' => 'Company Name',
+			'FuturePlan' => 'Future Plan',
+			'YearStarted' => 'Year Started',
+			'YearEnded' => 'Year Ended',
+			'Honor' => 'Honor',
+			'Occupation' => 'Occupation',
+		);
 	}
 
 	/**
@@ -149,12 +148,12 @@ class Profile extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public $keyword;
 	public function search($type)
 	{
-		
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
 		$criteria=new CDbCriteria;
-		$criteria->select = array("t.Id as Id",
+$criteria->select = array("t.Id as Id",
 					"CONCAT(t.Firstname,' ', t.Lastname) as fullname",
 					"school.Name as Schoolname",
 					"application.Course as Course"
@@ -183,16 +182,19 @@ class Profile extends CActiveRecord
 		        'desc'=>'application.Course DESC',
 		    ),
 		    '*', // this adds all of the other columns as sortable
-		);
+		);			
+
+
 		return new CActiveDataProvider($this, array(
-				'criteria'=>$criteria,
-				'sort'=>$sort,
+			'criteria'=>$criteria,
+			'sort'=>$sort,
 				'pagination' => array(
 					'pagesize' => 30,
 					),
-				));
+				));	
 	}
-
+	
+	
 	public function getStudentNames()
 	{
 		$criteria=new CDbCriteria;
@@ -234,6 +236,12 @@ class Profile extends CActiveRecord
 	        	)); 
 	        return $dataReportItem;
     }
+	
+	public function IsStudent($type)
+	{
+		return $type === "Student";
+	}
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
@@ -243,10 +251,5 @@ class Profile extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-
-	public function IsStudent($type)
-	{
-		return $type === "Student";
 	}
 }

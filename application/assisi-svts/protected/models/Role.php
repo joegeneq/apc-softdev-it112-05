@@ -25,7 +25,9 @@ class Role extends CActiveRecord
 	{
 		return CHtml::listData(Role::model()->findAll(),'Id','Name');
 	}
-
+	
+	
+ 
 
 	/**
 	 * @return array validation rules for model attributes.
