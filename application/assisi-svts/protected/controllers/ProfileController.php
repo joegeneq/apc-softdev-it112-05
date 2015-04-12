@@ -102,7 +102,7 @@ class ProfileController extends RController
 
 		if(isset($_POST['Profile'],$_POST['Partnerschool']))
 		{
-
+		
 			$model->attributes=$_POST['Profile'];
 			$model->DateCreated = date("Y-m-d");
 			$model->DateOfBirth = date("Y-m-d",strtotime($model->DateOfBirth));
@@ -121,6 +121,7 @@ class ProfileController extends RController
 			$model->YearStarted =$_POST['Profile']['YearStarted'];
 			$model->YearEnded=$_POST['Profile']['YearEnded'];
 			$application->Course=$_POST['Application']['Course'];
+			$model->Occupation=$_POST['Profile']['Occupation'];
 			
 			if($valid)
 			{
