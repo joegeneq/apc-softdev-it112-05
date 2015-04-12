@@ -11,6 +11,8 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'List Announcement', 'url'=>array('index')),
 	array('label'=>'Create Announcement', 'url'=>array('create')),
+	array('label'=>'Delete Announcement', 'url'=>array('delete', 'id'=>$model->id))
+	
 );
 ?>
 

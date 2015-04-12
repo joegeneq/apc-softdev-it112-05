@@ -10,6 +10,8 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'List Announcement', 'url'=>array('index')),
 	array('label'=>'Create Announcement', 'url'=>array('create')),
+	array('label'=>'Delete Soldier', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -39,17 +41,17 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'model'=>$model,
 )); ?>
 </div><!-- search-form -->
-
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+	<?php $this->widget('bootstrap.widgets.TbGridView', array(
 	'id'=>'announcement-grid',
 	'dataProvider'=>$model->search(),
-	'filter'=>$model,
+	/*'filter'=>$model,*/
 	'columns'=>array(
-		'id',
+	//	'id',
 		'Subject',
 		'message_box',
 		array(
-			'class'=>'CButtonColumn',
+			'class'=>'bootstrap.widgets.TbButtonColumn',
+					'template'=>'{update},{delete}',
 		),
 	),
 )); ?>
