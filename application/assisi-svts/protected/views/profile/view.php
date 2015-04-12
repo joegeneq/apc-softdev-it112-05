@@ -19,13 +19,60 @@ $this->menu=array(
 
 	<h1>
 	<?php echo $model->getFullname();
-		if($type==='Student')
+		if($type==='Student'){	
 			echo Timeline::getSponsoredYears($application->Id);
-		else if($type === 'Alumni')
-			echo ' ('. $model->YearStarted. '-'.$model->YearEnded.')';
+			echo ' (';
+			$this->widget('editable.EditableField', array(
+				'type'      => 'select',
+				'model'     => $user,
+				'attribute' => 'Role_Id',
+				'url'       => $this->createUrl('user/update'), 
+				'source'    => Editable::source(Role::model()->GetRoles()),
+				//you can also use js function returning string url
+				//'source'    => 'js: function() { return "?r=role/getRolesForEdit"; }',
+				'placement' => 'right',
+			));
+			echo ')';
+		}	
+		else if($type === 'Alumni'){
+			echo ' (';
+			$this->widget('editable.EditableField', array(
+				'type'      => 'text',
+				'model'     => $model,
+				'attribute' => 'YearStarted',
+				'url'       => $this->createUrl('profile/update'), 
+				//'source'    => Editable::source(Role::model()->GetRoles()),
+				//you can also use js function returning string url
+				//'source'    => 'js: function() { return "?r=role/getRolesForEdit"; }',
+				'placement' => 'right',
+			));
+			echo  '-';
+			$this->widget('editable.EditableField', array(
+				'type'      => 'text',
+				'model'     => $model,
+				'attribute' => 'YearEnded',
+				'url'       => $this->createUrl('profile/update'), 
+				//'source'    => Editable::source(Role::model()->GetRoles()),
+				//you can also use js function returning string url
+				//'source'    => 'js: function() { return "?r=role/getRolesForEdit"; }',
+				'placement' => 'right',
+			));
+			echo ') <br/>';
+			$this->widget('editable.EditableField', array(
+				'type'      => 'text',
+				'model'     => $model,
+				'attribute' => 'Honor',
+				'url'       => $this->createUrl('profile/update'), 
+				//'source'    => Editable::source(Role::model()->GetRoles()),
+				//you can also use js function returning string url
+				//'source'    => 'js: function() { return "?r=role/getRolesForEdit"; }',
+				'placement' => 'right',
+			));
+		}
+		
+		
 	?>
 	</h1>
-	<?php echo $model->Honor;?>
 <?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'myModal')); ?>
  
 <!-- <div class="modal-header">
@@ -160,14 +207,14 @@ $this->menu=array(
             ),
         ), 
 		
-		/*array(
+		array(
             'name' => 'Occupation',
             'editable' => array(
                 'type'       => 'text',
                 'placement' => 'right',           
             ),
-			'visible'=>($type !== "Student"),
-        ),*/
+			'visible'=>($type === 'Alumni'),
+        ),
         array(
             'name'=>'FuturePlan',
 			'label'=>($type === 'Student') ? 'FuturePlan' : 'Remarks'
@@ -196,7 +243,7 @@ $this->menu=array(
  	),
  )); 
 $this->widget('editable.EditableDetailView', array(
-    'data'=>$application,   
+    'data'=>$applicatio n,   
 	'htmlOptions'=>array('style'=>'padding-bottom:20px;'),
     'attributes'=>array(
         array( 'name'=>'Course',

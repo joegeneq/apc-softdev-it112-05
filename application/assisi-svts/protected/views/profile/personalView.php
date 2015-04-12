@@ -104,15 +104,13 @@
 					        'placement' => 'right',           
 					    )
 					),
-				
-		/*array(
+		array(
             'name' => 'Occupation',
             'editable' => array(
                 'type'       => 'text',
                 'placement' => 'right',           
-            )
-				
-        ),*/
+            )		
+        ),
 					array(
 					    'name' => 'FuturePlan',
 					    'editable' => array(
