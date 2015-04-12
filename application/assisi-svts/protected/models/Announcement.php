@@ -7,6 +7,7 @@
  * @property integer $id
  * @property string $Subject
  * @property string $message_box
+ * @property string $date_posted
  */
 class Announcement extends CActiveRecord
 {
@@ -30,7 +31,7 @@ class Announcement extends CActiveRecord
 			array('Subject', 'length', 'max'=>150),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, Subject, message_box', 'safe', 'on'=>'search'),
+			array('id, Subject, message_box, date_posted', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,6 +55,7 @@ class Announcement extends CActiveRecord
 			'id' => 'ID',
 			'Subject' => 'Subject',
 			'message_box' => 'Message Box',
+			'date_posted' => 'Date Posted',
 		);
 	}
 
@@ -78,6 +80,7 @@ class Announcement extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('Subject',$this->Subject,true);
 		$criteria->compare('message_box',$this->message_box,true);
+		$criteria->compare('date_posted',$this->date_posted,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
