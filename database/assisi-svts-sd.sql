@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2015 at 05:36 PM
+-- Generation Time: Apr 28, 2015 at 03:31 AM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `assisi-test`
+-- Database: `assisi-svts-sd`
 --
 
 -- --------------------------------------------------------
@@ -97,15 +97,14 @@ CREATE TABLE IF NOT EXISTS `announcement` (
   `message_box` longtext NOT NULL,
   `date_posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `announcement`
 --
 
 INSERT INTO `announcement` (`id`, `Subject`, `message_box`, `date_posted`) VALUES
-(5, 'dasdas', 'dadasdasd', '2015-04-12 11:01:38'),
-(7, 'dasd', 'adsadas', '2015-04-12 11:04:15');
+(9, 'Hi Scholars', 'Batch 2013 Reunion', '2015-04-17 06:05:26');
 
 -- --------------------------------------------------------
 
@@ -122,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `application` (
   `User_Id` int(11) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `fk_Application_User1_idx` (`User_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `application`
@@ -160,7 +159,11 @@ INSERT INTO `application` (`Id`, `TypeOfApplication`, `Course`, `Duration`, `Spo
 (29, 'College', 'AB Literature', '4', 1, 32),
 (30, 'College', 'IT', '3', 1, 35),
 (31, 'College', 'IT', '', 1, 36),
-(32, '', '', '', 0, 38);
+(32, '', '', '', 0, 38),
+(33, '', 'IT', '', 0, 39),
+(34, 'College', 'IT', '2', 1, 40),
+(35, '', '', '', 0, 41),
+(36, 'Vocational', 'engineer', '2001', 1, 42);
 
 -- --------------------------------------------------------
 
@@ -183,6 +186,8 @@ CREATE TABLE IF NOT EXISTS `authassignment` (
 INSERT INTO `authassignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
 ('admin', '1', NULL, 'N;'),
 ('Alumni', '38', NULL, NULL),
+('Alumni', '39', NULL, NULL),
+('Alumni', '41', NULL, NULL),
 ('Coordinator', '29', NULL, NULL),
 ('Coordinator', '31', NULL, NULL),
 ('Coordinator', '33', NULL, NULL),
@@ -210,6 +215,8 @@ INSERT INTO `authassignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
 ('Student', '32', NULL, NULL),
 ('Student', '35', NULL, NULL),
 ('Student', '36', NULL, NULL),
+('Student', '40', NULL, NULL),
+('Student', '42', NULL, NULL),
 ('Student', '5', NULL, NULL),
 ('Student', '6', NULL, NULL),
 ('Student', '7', NULL, NULL),
@@ -392,7 +399,7 @@ CREATE TABLE IF NOT EXISTS `partnerschool` (
   PRIMARY KEY (`Id`),
   KEY `fk_School_has_User_User1_idx` (`User_Id`),
   KEY `fk_School_has_User_School1_idx` (`School_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
 
 --
 -- Dumping data for table `partnerschool`
@@ -435,7 +442,11 @@ INSERT INTO `partnerschool` (`Id`, `School_Id`, `User_Id`) VALUES
 (34, 8, 35),
 (35, 4, 36),
 (36, 3, 37),
-(37, 17, 38);
+(37, 17, 38),
+(38, 3, 39),
+(39, 14, 40),
+(40, 15, 41),
+(41, 2, 42);
 
 -- --------------------------------------------------------
 
@@ -466,7 +477,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `Occupation` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Email_UNIQUE` (`Email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
 
 --
 -- Dumping data for table `profile`
@@ -483,7 +494,7 @@ INSERT INTO `profile` (`Id`, `Lastname`, `Firstname`, `Middlename`, `Religion`, 
 (8, 'Sun', 'Thea Christine', 'Alima', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Sam Village Brgy. Granada Bacolod City', '09109944439', '_____@yahoo.com', '1970-01-01', '2014-05-01 06:46:01', 'Single', NULL, '', 0000, 0000, '', NULL),
 (9, 'Perez', 'Teozon Joy', 'De arroz', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. Nami-Nami Brgy. Banago Bacolod City ', '4410787', '____@yahoo.com', '1970-01-01', '2014-05-01 06:48:39', 'Single', NULL, '', 0000, 0000, '', NULL),
 (10, 'Pastor', 'Chreszea', 'Jaud', 'Roman Catholic', 0, '1970-01-01', 'Valladolid', 'Sitio himaya Brgy. Sagua Banwa Villadolid Negros Occidental', '09301665163', '___@yahoo.com', '1970-01-01', '2014-05-01 06:52:30', 'Single', NULL, '', 0000, 0000, '', NULL),
-(11, 'Sayco', 'Melgie May', 'Francisco', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Brgy. 35 Prk. Malipayon B.C', '09983571498', '__@yahoo.com', '1970-01-01', '2014-05-01 06:56:21', 'Single', NULL, '', 0000, 0000, '', NULL),
+(11, 'Sayco', 'Melgie May', 'Francisco', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Brgy. 35 Prk. Malipayon B.C', '09983571498', 'melgie.sayco@yahoo.com', '1970-01-01', '2014-05-01 06:56:21', 'Single', NULL, '', 2012, 2015, 'Cumlaude', NULL),
 (12, 'Cuaycong', 'Nina', 'Tongcua', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Prk. 2 Alunan St. Brgy. Granada Bacolod City', '09083499738', '_@yahoo.com', '1970-01-01', '2014-05-01 06:59:31', 'Single', NULL, '', 0000, 0000, '', NULL),
 (13, 'Latergo', 'Rica Vanessa', 'Villacuatro', 'Roman Catholic', 0, '1970-01-01', 'Bacolod City', 'Phase 6 B, Prk. Sto. Nino Blk. 31 lot 11 Brgy. handumana Bacolod City', '09465790404', '_@gmail.com', '1970-01-01', '2014-05-01 07:02:59', 'Single', NULL, '', 0000, 0000, '', NULL),
 (14, 'Albaciete', 'Felicisimo Jr', 'Giltendez', 'Roman Catholic', 1, '1970-01-01', 'Bacolod City', 'Prk Tinagong Paraiso brgy. Banago Bacolod City', '09129813718', '****@yahoo.com', '1970-01-01', '2014-05-01 07:09:07', 'Single', NULL, '', 0000, 0000, '', NULL),
@@ -508,9 +519,16 @@ INSERT INTO `profile` (`Id`, `Lastname`, `Firstname`, `Middlename`, `Religion`, 
 (34, 'Galan', 'Sarah', 'M.', '', 0, '1981-11-12', '', 'Assisi Development Foundation Incorporated', '09232996239', 'sar_moresca@yahoo.com', '2014-05-19', '2014-05-19 03:42:01', 'Married', NULL, '', 0000, 0000, '', NULL),
 (35, 'Almazan', 'Jeff Bryan', 'Talatagod', '', 1, '1970-01-01', '', 'Alabang', '5051735', 'jtalmazan113@gmail.com', '2015-02-28', '2015-02-28 06:53:42', 'Single', NULL, '', 0000, 0000, '', NULL),
 (36, 'Almazan', 'Jeff', 'Talatagod', 'Roman Catholic', 1, '1970-01-01', 'Manila', 'Alabang', '0906754495', 'jeffbryan18@gmail.com', '2015-03-04', '2015-03-04 11:37:19', 'Single', NULL, '', 0000, 0000, '', NULL),
-(37, 'Almazan', 'Jomjom', 'Talatagod', 'Catholic', 1, '1970-01-01', 'Manila', 'Bicutan', '09067554495', 'jeffbryan_almazan@yahoo.com', '2015-03-17', '2015-03-17 15:13:37', 'Single', NULL, '', 0000, 0000, '', NULL),
+(37, 'Almazan', 'Jomjom', 'Talatagod', 'Catholic', 1, '1970-01-29', 'Manila', 'Bicutan', '09067554495', 'jeffbryan_almazan@yahoo.com', '2015-03-17', '2015-03-17 15:13:37', 'Single', NULL, 'This 2015 i''m planning to work in Singapore to gain experience. \n\nThis 2016 I''m gonna buy a house here in Xinxiao, marry my fiance.\n\nfdgdf', 0000, 0000, '', 'IT Project Manager'),
 (38, 'Taliman', 'Marc Jomari', 'Manuel', '', 1, '1970-01-01', '', 'P14 06-6th 5th St., Villamor Airbase Pasay City', '09353383138', 'jomgel4teen@gmail.com', '2015-03-22', '2015-03-22 12:31:35', 'Single', NULL, '', 0000, 0000, '', NULL),
-(39, 'Test', 'Test', '', '', 1, '1970-01-01', '', '', '09053394068', 'ccambay@apc.edu.ph', '2015-04-09', '2015-04-09 16:54:47', 'Single', NULL, '', 0000, 0000, '', NULL);
+(39, 'Test', 'Test', '', '', 1, '1970-01-01', '', '', '09053394068', 'ccambay@apc.edu.ph', '2015-04-09', '2015-04-09 16:54:47', 'Single', NULL, '', 0000, 0000, '', NULL),
+(40, 'espartero', 'rodolfe', 'tolete', 'catholic', 1, '1993-05-06', 'aparri cagayan', '', '09054164848', 'rodolfechristianespartero@gmail.com', '2015-04-13', '2015-04-13 05:26:39', 'Single', NULL, 'ewqqwe', 2009, 2015, 'it', 'employed'),
+(41, 'Espartero', 'Dolfe', '', 'Catholic', 1, '1929-11-24', 'Manila', '', '0', 'j@y.c', '2015-04-16', '2015-04-16 08:25:33', 'Single', NULL, '', 2012, 2014, 'Cumlaude', ''),
+(42, 'Almazan', 'Jeff', '', '', 1, '1995-11-08', '', '', '2', 'j@y.cw', '2015-04-16', '2015-04-16 08:29:41', 'Single', NULL, '', 0000, 0000, '', ''),
+(43, 'Almazan', 'Jeff', '', '', 1, '1995-11-08', '', '', '2', 'j@ysds.cw', '2015-04-16', '2015-04-16 08:29:58', 'Single', NULL, '', 0000, 0000, '', ''),
+(44, 'Almazan', 'Jeff', '', '', 1, '1995-11-08', '', '', '2', 'jeff@sssss.com', '2015-04-16', '2015-04-16 08:30:14', 'Single', NULL, '', 0000, 0000, '', ''),
+(45, 'Tolorio', 'Herbert', '', '', 1, '1995-11-08', '', '', '2', 'shane.herbert@yahoo.com', '2015-04-16', '2015-04-16 08:31:00', 'Single', NULL, '', 0000, 0000, '', ''),
+(46, 'tolete', 'stephen', 'a', 'catholic', 1, '1995-01-09', 'allacapan', '', '09312313', 'st@yahoo.com', '2015-04-16', '2015-04-16 10:26:10', 'Single', NULL, '', 0000, 0000, '', '');
 
 -- --------------------------------------------------------
 
@@ -704,7 +722,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`Id`),
   KEY `fk_User_Profile1_idx` (`Profile_Id`),
   KEY `fk_User_Role1_idx` (`Role_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=43 ;
 
 --
 -- Dumping data for table `user`
@@ -720,10 +738,10 @@ INSERT INTO `user` (`Id`, `Username`, `Password`, `Profile_Id`, `Role_Id`) VALUE
 (7, 'jligahon', '$2ImmH779wfRE', 7, 4),
 (8, 'tsun', '$2dC7poRXgcFU', 8, 3),
 (9, 'tperez', '$2cmE//3GtoIc', 9, 3),
-(10, 'cpastor', '$2dDcLo6LKbIc', 10, 3),
-(11, 'msayco', '$2m6bn3Rl2Kfc', 11, 3),
-(12, 'ncuaycong', '$2Cr9D8Wtgg0I', 12, 3),
-(13, 'rlatergo', '$2TyD8cpD8ziQ', 13, 3),
+(10, 'cpastor', '$2dDcLo6LKbIc', 10, 4),
+(11, 'msayco', '$2m6bn3Rl2Kfc', 11, 4),
+(12, 'ncuaycong', '$2Cr9D8Wtgg0I', 12, 4),
+(13, 'rlatergo', '$2TyD8cpD8ziQ', 13, 4),
 (14, 'falbaciete', '$2A6fUrsK8PS.', 14, 3),
 (15, 'ndelicano', '$2udGG/G5Z.G6', 15, 3),
 (16, 'lvalenzuela', '$28KPxhDXaYAI', 16, 3),
@@ -748,7 +766,11 @@ INSERT INTO `user` (`Id`, `Username`, `Password`, `Profile_Id`, `Role_Id`) VALUE
 (35, 'ealmazan', '$2CHcwB21.4wc', 36, 3),
 (36, 'falmazan', '$2chnd3bR8saE', 37, 4),
 (37, 'mtaliman', '$2oLHeXn6lT9I', 38, 2),
-(38, 'ttest', '$2yZvyHCINtGo', 39, 4);
+(38, 'ttest', '$2yZvyHCINtGo', 39, 4),
+(39, 'respartero', '$2ex75GUlkc4k', 40, 4),
+(40, 'despartero', '$2TrD.fPzZG7E', 41, 4),
+(41, 'htolorio', '$2peWdiOKPSf.', 45, 4),
+(42, 'stolete', '$2vvNMsjhGRYs', 46, 3);
 
 --
 -- Constraints for dumped tables
