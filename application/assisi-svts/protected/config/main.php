@@ -140,7 +140,7 @@ return array(
 
 		'db'=>array(
 			'class'=>'CDbConnection',
-			'connectionString' => 'mysql:host=localhost;dbname=assisi-test',
+			'connectionString' => 'mysql:host=localhost;dbname=assisi-svts-sd',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
