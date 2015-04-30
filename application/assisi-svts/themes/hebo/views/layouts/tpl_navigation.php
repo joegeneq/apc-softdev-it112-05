@@ -40,7 +40,7 @@
 					   array(
                             'label'=>'Announcement', 
                             'url'=>array('/announcement/index'),
-							'visible'=>Yii::app()->user->checkAccess('Student'), 
+							'visible'=>Yii::app()->user->checkAccess('Alumni'), 
                             'linkOptions'=>array(
                                 "data-description"=>"inquiry suggestions"
                             )
